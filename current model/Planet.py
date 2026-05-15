@@ -14,7 +14,7 @@ class Planet():
                                    position.y,
                                    position.z)
 
-        print(f" \n Radius inputted: {r}   Density inputted: {D}  Initialised planet mass: {self.mass:25}")
+        #print(f" \n Radius inputted: {r}   Density inputted: {D}  Initialised planet mass: {self.mass:25}")
 
     def draw(self,color):
         pr.draw_sphere((self.position.x,
@@ -34,4 +34,4 @@ class Planet():
                             pr.Color(55,55,55,55))
         
     def simulate(self):
-        self.position.x += 0.01
+        self.position.x += 0.05

@@ -10,7 +10,7 @@ from Planet import Planet
 from menu import *
 
 def main():
-    pr.init_window(1400,900,"window")
+    pr.init_window(1400,900,"Simple Game Engine")
     pr.set_target_fps(60)
     pr.rl_set_line_width(3)
     camera = pr.Camera3D(
@@ -22,9 +22,9 @@ def main():
     map_size = 5
     player = Player(10)
 
-    #planet1 = Planet(2,2,pr.Vector3(0,0,0))
-    #planet2 = Planet(5,2,pr.Vector3(5,0,5))
-    #planet3 = Planet(5,2,pr.Vector3(-15,0,-15))
+
+    objects = []
+
     menu_open = False
 
     while not pr.window_should_close():
@@ -35,7 +35,6 @@ def main():
                 pr.enable_cursor()
             else:
                 pr.disable_cursor()
-            
 
 
         
@@ -44,8 +43,15 @@ def main():
 
         if not menu_open: 
             player.update()
+
             #simulate here
-            #
+            #------------#
+            for obj in objects:
+                planet = Planet(obj[0],obj[1],obj[2])
+                planet.simulate()
+                obj[2] = planet.position
+            #------------#
+
             pr.disable_cursor()
         
 
@@ -66,37 +72,16 @@ def main():
         pr.begin_mode_3d(camera)
         pr.draw_grid(map_size * 20,1)
 
-            
-        #planet1.draw(pr.RED)
-        #planet2.draw(pr.BLUE)
-        #planet3.draw(pr.BLACK)
-            
+        if len(objects) > 0:
+            for obj in objects:
+                planet = Planet(obj[0],obj[1],obj[2])
+                planet.draw(pr.Color(obj[3],obj[4],obj[5],obj[6]))
         
-
-
-        #pr.disable_cursor()
         pr.end_mode_3d()
         if menu_open:
-            draw_menu()
+            draw_menu(objects)
+            #print(objects)
         pr.end_drawing()
-        
-
-
-    
-
-#def create_grid(mass,position):
-
-
-    
-
-        
-
-        
-
-
-       
-        
-
-     
+            
 main()
 
