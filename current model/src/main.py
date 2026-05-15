@@ -65,9 +65,9 @@ def main():
         pr.draw_grid(map_size * 20,1)
 
 
-        planet1.draw()
-        planet2.draw()
-        planet3.draw()
+        planet1.draw(pr.RED)
+        planet2.draw(pr.BLUE)
+        planet3.draw(pr.BLACK)
             
         
 
@@ -165,13 +165,13 @@ class Planet():
 
         print(f" \n Radius inputted: {r}   Density inputted: {D}  Initialised planet mass: {self.mass:25}")
 
-    def draw(self):
+    def draw(self,color):
         pr.draw_sphere((self.position.x,
                         self.position.y,
                         self.position.z),
 
                         self.radius,
-                        self.colour)
+                        color)
         
         pr.draw_sphere_wires((self.position.x,
                             self.position.y,
@@ -180,7 +180,7 @@ class Planet():
                             self.radius + 0.002,
                             25,
                             50,
-                            pr.BLUE)
+                            pr.Color(55,55,55,55))
         
     def simulate(self):
         self.position.x += 0.01
