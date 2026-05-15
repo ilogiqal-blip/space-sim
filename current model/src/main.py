@@ -2,7 +2,12 @@ import pyray as pr
 import math
 import time
 #print(dir(pr))
+
+
+
 from Player import Player
+from Planet import Planet
+from menu import *
 
 def main():
     pr.init_window(1400,900,"window")
@@ -78,46 +83,8 @@ def main():
             draw_menu()
         pr.end_drawing()
         
-         
-class Planet():
 
-    def __init__(self,r,D,position):
-        self.radius = r
-        self.density = D
-        self.colour = pr.DARKGREEN
-        self.mass = (4/3)*math.pi*math.pow(self.radius,3)
-        self.position = pr.Vector3(position.x,
-                                   position.y,
-                                   position.z)
 
-        print(f" \n Radius inputted: {r}   Density inputted: {D}  Initialised planet mass: {self.mass:25}")
-
-    def draw(self,color):
-        pr.draw_sphere((self.position.x,
-                        self.position.y,
-                        self.position.z),
-
-                        self.radius,
-                        color)
-        
-        pr.draw_sphere_wires((self.position.x,
-                            self.position.y,
-                            self.position.z),
-                              
-                            self.radius + 0.002,
-                            25,
-                            50,
-                            pr.Color(55,55,55,55))
-        
-    def simulate(self):
-        self.position.x += 0.01
-
-def draw_menu():
-    pr.draw_rectangle(50,50,460,700,pr.Color(50,50,50,125))
-    pr.draw_rectangle(70,70,200,150,pr.GRAY)
-    pr.draw_rectangle(290,70,200,150,pr.GRAY)
-    pr.draw_rectangle(70,240,200,150,pr.GRAY)
-    pr.draw_rectangle(290,240,200,150,pr.GRAY)
     
 
 #def create_grid(mass,position):

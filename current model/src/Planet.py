@@ -1,0 +1,37 @@
+import pyray as pr 
+import math
+import time
+
+
+class Planet():
+
+    def __init__(self,r,D,position):
+        self.radius = r
+        self.density = D
+        self.colour = pr.DARKGREEN
+        self.mass = (4/3)*math.pi*math.pow(self.radius,3)
+        self.position = pr.Vector3(position.x,
+                                   position.y,
+                                   position.z)
+
+        print(f" \n Radius inputted: {r}   Density inputted: {D}  Initialised planet mass: {self.mass:25}")
+
+    def draw(self,color):
+        pr.draw_sphere((self.position.x,
+                        self.position.y,
+                        self.position.z),
+
+                        self.radius,
+                        color)
+        
+        pr.draw_sphere_wires((self.position.x,
+                            self.position.y,
+                            self.position.z),
+                              
+                            self.radius + 0.002,
+                            25,
+                            50,
+                            pr.Color(55,55,55,55))
+        
+    def simulate(self):
+        self.position.x += 0.01
