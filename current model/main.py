@@ -22,14 +22,10 @@ def main():
     map_size = 5
     player = Player(10)
 
-
-    #planets = [planet1,planet2]
-    planet1 = Planet(2,2,pr.Vector3(0,0,0))
-    planet2 = Planet(5,2,pr.Vector3(5,0,5))
-    planet3 = Planet(5,2,pr.Vector3(-15,0,-15))
+    #planet1 = Planet(2,2,pr.Vector3(0,0,0))
+    #planet2 = Planet(5,2,pr.Vector3(5,0,5))
+    #planet3 = Planet(5,2,pr.Vector3(-15,0,-15))
     menu_open = False
-
-
 
     while not pr.window_should_close():
         if pr.is_key_pressed(pr.KEY_O):
@@ -48,7 +44,8 @@ def main():
 
         if not menu_open: 
             player.update()
-            planet2.simulate()
+            #simulate here
+            #
             pr.disable_cursor()
         
 
@@ -69,10 +66,10 @@ def main():
         pr.begin_mode_3d(camera)
         pr.draw_grid(map_size * 20,1)
 
-
-        planet1.draw(pr.RED)
-        planet2.draw(pr.BLUE)
-        planet3.draw(pr.BLACK)
+            
+        #planet1.draw(pr.RED)
+        #planet2.draw(pr.BLUE)
+        #planet3.draw(pr.BLACK)
             
         
 
