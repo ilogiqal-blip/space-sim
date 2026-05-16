@@ -1,11 +1,12 @@
 import pyray as pr 
 import math
 import time
-Planet_version = "0.0.2"
+Planet_version = "0.0.7"
 
 class Planet():
 
     def __init__(self,r,D,position):
+        self.version = Planet_version
         self.radius = r
         self.density = D
         self.colour = pr.DARKGREEN
@@ -37,5 +38,4 @@ class Planet():
     def simulate(self):
         force = 0
         mass = self.mass
-        #print(force,mass)
 print(f"Planet version {Planet_version}")

@@ -2,7 +2,7 @@ import pyray as pr
 import math
 import time
 
-Player_version = "0.0.1"
+Player_version = "0.0.7"
 
 class Player():
 
@@ -18,7 +18,7 @@ class Player():
         self.sensitiviy  = 0.002
         self.direction = pr.Vector3(1,0,1)
         self.speed = speed
-        
+        self.version = Player_version
         print(f"sensitivity set to:{self.sensitiviy}")
 
 

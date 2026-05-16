@@ -2,8 +2,9 @@ import pyray as pr
 import math
 import time
 from Planet import Planet
+from Player import Player
 
-version = "0.0.1"
+version = "0.0.7"
 side_menu = False
 r = 0
 d = 0
@@ -121,7 +122,8 @@ def draw_side_menu(mouse_pos,planets):
                 planets.append(new_planet)
                 planet = Planet(new_planet[0], new_planet[1], new_planet[2])
 
-                print(f" \n Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
+                print(f"\nRadius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
+                print(f"Planet version {planet.version}")
                 print(f"menu version {version}")
             
 def check_mouse_input():
