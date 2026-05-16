@@ -10,6 +10,8 @@ x = 0
 y = 0
 z = 0
 active_field = ""
+
+
 def draw_menu(planets):
     global side_menu
     global r 
@@ -34,8 +36,35 @@ def draw_menu(planets):
         pr.draw_rectangle_lines(600,70,400,300,pr.WHITE)
         pr.draw_text("Input Planet Parameters", 610, 80, 20, pr.WHITE)
 
+        draw_side_menu(mouse_pos)
+        check_mouse_input()
+        check_button_input()
+
         
-############################################################################# Radius
+        pr.draw_rectangle(70,70,200,150,pr.GRAY)
+
+        #print("Button_1 pressed")
+        #new_planet = [r,d,
+                    #pr.Vector3(x,y,z),
+                    #255,0,255,255]
+            
+        #planets.append(new_planet)
+        #planet = Planet(new_planet[0], new_planet[1], new_planet[2])
+
+        #print(f" \n Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised planet mass: {planet.mass:25}")
+
+    else:
+        pr.draw_rectangle(70,70,200,150,pr.GRAY)
+
+
+def draw_side_menu(mouse_pos):
+        global r 
+        global d
+        global x
+        global y
+        global z
+        global active_field
+    ############################################################################# Radius
         if (610 < mouse_pos.x < 700) and ( 130 < mouse_pos.y < 150):
             active_field = "r"              
             pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.LIGHTGRAY)
@@ -43,7 +72,7 @@ def draw_menu(planets):
             pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
 ############################################################################# Density
         if (610 < mouse_pos.x < 700) and ( 180 < mouse_pos.y < 200):              
-            active_field = "d" 
+            active_field = "d"
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.LIGHTGRAY)
         else:
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
@@ -66,56 +95,107 @@ def draw_menu(planets):
         else:
             pr.draw_text(f"position z: {z}", 610, 330, 20, pr.WHITE)
 
-        
-        if active_field == "r" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-            r += 5
-        elif active_field == "r" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_RIGHT):
-            r -= 5
-            if r < 0:
-                r = 0
+def check_mouse_input():
+    global r 
+    global d
+    global x
+    global y
+    global z
+    global active_field
+    if active_field == "r" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
+        r += 1
+        time.sleep(0.05)
+    elif active_field == "r" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
+        r -= 1
+        time.sleep(0.05)
+        if r < 0:
+            r = 0
 
-        if active_field == "d" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-            d += 5
-        elif active_field == "d" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_RIGHT):
-            d -= 5
-            if d < 0:
-                d = 0
+    if active_field == "d" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
+        d += 1
+        time.sleep(0.05)
+    elif active_field == "d" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
+        d -= 1
+        time.sleep(0.05)
+        if d < 0:
+            d = 0  
 
-        if active_field == "x" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-            x += 5
-        elif active_field == "x" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_RIGHT):
-            x -= 5
-            if x < 0:
-                x = 0
+    if active_field == "x" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
+        x += 1
+        time.sleep(0.05)
+    elif active_field == "x" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
+        x -= 1
+        time.sleep(0.05)
+        if x < 0:
+            x = 0
 
-        if active_field == "y" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-            y += 5
-        elif active_field == "y" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_RIGHT):
-            y -= 5
-            if y < 0:
-                y = 0
+    if active_field == "y" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
+        y += 1
+        time.sleep(0.05)
+    elif active_field == "y" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
+        y -= 1
+        time.sleep(0.05)
+        if y < 0:
+            y = 0
 
-        if active_field == "z" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-            z += 5
-        elif active_field == "z" and pr.is_mouse_button_released(pr.MOUSE_BUTTON_RIGHT):
-            z -= 5
-            if z < 0:
-                z = 0
+    if active_field == "z" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
+        z += 1
+        time.sleep(0.05)
+    elif active_field == "z" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
+        z -= 1
+        time.sleep(0.05)
+        if z < 0:
+            z = 0
 
-        pr.draw_rectangle(70,70,200,150,pr.GRAY)
+def check_button_input():
+    global r 
+    global d
+    global x
+    global y
+    global z
+    global active_field
+    if active_field == "r" and pr.is_key_pressed(pr.KEY_EQUAL):
+        r += 1
+        time.sleep(0.05)
+    elif active_field == "r" and pr.is_key_pressed(pr.KEY_MINUS):
+        r -= 1
+        time.sleep(0.05)
+        if r < 0:
+            r = 0
 
-        #print("Button_1 pressed")
-        #new_planet = [r,d,
-                    #pr.Vector3(x,y,z),
-                    #255,0,255,255]
-            
-        #planets.append(new_planet)
-        #planet = Planet(new_planet[0], new_planet[1], new_planet[2])
+    if active_field == "d" and pr.is_key_pressed(pr.KEY_EQUAL):
+        d += 1
+        time.sleep(0.05)
+    elif active_field == "d" and pr.is_key_pressed(pr.KEY_MINUS):
+        d -= 1
+        time.sleep(0.05)
+        if d < 0:
+            d = 0  
 
-        #print(f" \n Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised planet mass: {planet.mass:25}")
+    if active_field == "x" and pr.is_key_pressed(pr.KEY_EQUAL):
+        x += 1
+        time.sleep(0.05)
+    elif active_field == "x" and pr.is_key_pressed(pr.KEY_MINUS):
+        x -= 1
+        time.sleep(0.05)
+        if x < 0:
+            x = 0
 
-    else:
-        pr.draw_rectangle(70,70,200,150,pr.GRAY)
+    if active_field == "y" and pr.is_key_pressed(pr.KEY_EQUAL):
+        y += 1
+        time.sleep(0.05)
+    elif active_field == "y" and pr.is_key_pressed(pr.KEY_MINUS):
+        y -= 1
+        time.sleep(0.05)
+        if y < 0:
+            y = 0
 
-
+    if active_field == "z" and pr.is_key_pressed(pr.KEY_EQUAL):
+        z += 1
+        time.sleep(0.05)
+    elif active_field == "z" and pr.is_key_pressed(pr.KEY_MINUS):
+        z -= 1
+        time.sleep(0.05)
+        if z < 0:
+            z = 0
     

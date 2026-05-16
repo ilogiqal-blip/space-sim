@@ -80,7 +80,7 @@ def main():
         pr.end_mode_3d()
         if menu_open:
             draw_menu(objects)
-            #print(objects)
+            
         pr.end_drawing()
             
 main()
