@@ -5,10 +5,11 @@ Planet_version = "0.0.8"
 
 class Planet():
 
-    def __init__(self,r,D,position):
+    def __init__(self,r,D,position,velocity):
         self.version = Planet_version
         self.radius = r
         self.density = D
+        self.velocity = velocity
         self.colour = pr.DARKGREEN
         self.vol = (4/3)*math.pi*math.pow(self.radius,3)
         self.mass = self.vol * self.density
@@ -36,6 +37,7 @@ class Planet():
                             pr.Color(55,55,55,55))
         
     def simulate(self):
+        velocity = self.velocity
         force = 0
         mass = self.mass
 print(f"Planet version {Planet_version}")
