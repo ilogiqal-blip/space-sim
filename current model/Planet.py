@@ -1,7 +1,7 @@
 import pyray as pr 
 import math
 import time
-Planet_version = "0.0.7"
+Planet_version = "0.0.8"
 
 class Planet():
 

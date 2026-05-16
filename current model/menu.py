@@ -4,7 +4,7 @@ import time
 from Planet import Planet
 from Player import Player
 
-version = "0.0.7"
+version = "0.0.8"
 side_menu = False
 r = 0
 d = 0
@@ -122,9 +122,9 @@ def draw_side_menu(mouse_pos,planets):
                 planets.append(new_planet)
                 planet = Planet(new_planet[0], new_planet[1], new_planet[2])
 
-                print(f"\nRadius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
-                print(f"Planet version {planet.version}")
-                print(f"menu version {version}")
+                #print(f"Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
+                print(f"Planet version {planet.version:5}")
+                print(f"menu version   {version:5}")
             
 def check_mouse_input():
     global r 
@@ -230,4 +230,4 @@ def check_button_input():
         if z < 0:
             z = 0
 
-print(f"menu version {version}")
+print(f"menu version   {version:5}")

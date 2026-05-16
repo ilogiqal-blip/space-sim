@@ -2,12 +2,11 @@ import pyray as pr
 import math
 import time
 
-Player_version = "0.0.7"
+Player_version = "0.0.8"
 
 class Player():
 
     def __init__(self,speed):
-        print(f"Player version {Player_version}")
         self.pos = pr.Vector3(
                             0,
                             0.5,
@@ -20,6 +19,7 @@ class Player():
         self.speed = speed
         self.version = Player_version
         print(f"sensitivity set to:{self.sensitiviy}")
+        print(f"Player version {Player_version:5}")
 
 
 
@@ -77,4 +77,5 @@ class Player():
         self.pos.z += strafe * + movement_x * speed 
         #up/down    
         self.pos.y += up * speed
-print(f"Player version {Player_version}")
+        
+print(f"Player version {Player_version:5}")

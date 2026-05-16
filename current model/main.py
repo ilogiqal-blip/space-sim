@@ -5,7 +5,7 @@ from menu import *
 #print(dir(pr))
 
 
-main_version = "0.0.7"
+main_version = "0.0.8"
 from Player import Player
 from Planet import Planet
 from menu import *
@@ -86,4 +86,4 @@ def main():
             
 main()
 
-print(f"main version {main_version}")
+print(f"main version   {main_version:5}")
