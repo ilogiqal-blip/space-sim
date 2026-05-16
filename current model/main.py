@@ -14,7 +14,7 @@ def main():
     pr.set_target_fps(60)
     pr.rl_set_line_width(3)
     camera = pr.Camera3D(
-                        (2,1,2),              #position(x,y,z)
+                        (2,1,2),               #position(x,y,z)
                         (0,0,0),                #target(x,y,z)       
                         (0,1,0),                #up(x,y,z)
                          60,                    #fov
