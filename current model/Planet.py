@@ -1,7 +1,7 @@
 import pyray as pr 
 import math
 import time
-
+Planet_version = "0.0.2"
 
 class Planet():
 
@@ -37,5 +37,5 @@ class Planet():
     def simulate(self):
         force = 0
         mass = self.mass
-        print(force,mass)
-print("planet version 0.0.1")
+        #print(force,mass)
+print(f"Planet version {Planet_version}")

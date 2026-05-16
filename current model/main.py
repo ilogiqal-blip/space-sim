@@ -1,10 +1,11 @@
 import pyray as pr 
 import math
 import time
+from menu import *
 #print(dir(pr))
 
 
-
+main_version = "0.0.1"
 from Player import Player
 from Planet import Planet
 from menu import *
@@ -85,4 +86,4 @@ def main():
             
 main()
 
-print("main version 0.0.1")
+print(f"main version {main_version}")
