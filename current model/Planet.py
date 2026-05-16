@@ -9,7 +9,8 @@ class Planet():
         self.radius = r
         self.density = D
         self.colour = pr.DARKGREEN
-        self.mass = (4/3)*math.pi*math.pow(self.radius,3)
+        self.vol = (4/3)*math.pi*math.pow(self.radius,3)
+        self.mass = self.vol * self.density
         self.position = pr.Vector3(position.x,
                                    position.y,
                                    position.z)
@@ -34,4 +35,7 @@ class Planet():
                             pr.Color(55,55,55,55))
         
     def simulate(self):
-        self.position.x += 0.05
+        force = 0
+        mass = self.mass
+        print(force,mass)
+print("planet version 0.0.1")

@@ -74,3 +74,4 @@ class Player():
         self.pos.z += strafe * + movement_x * speed 
         #up/down    
         self.pos.y += up * speed
+print("player version 0.0.1")

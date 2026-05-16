@@ -3,6 +3,7 @@ import math
 import time
 from Planet import Planet
 
+
 side_menu = False
 r = 0
 d = 0
@@ -120,7 +121,7 @@ def draw_side_menu(mouse_pos,planets):
                 planets.append(new_planet)
                 planet = Planet(new_planet[0], new_planet[1], new_planet[2])
 
-                print(f" \n Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised planet mass: {planet.mass:25}")
+                print(f" \n Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
 
             
 def check_mouse_input():
@@ -226,4 +227,4 @@ def check_button_input():
         time.sleep(0.05)
         if z < 0:
             z = 0
-    
+print("menu version 0.0.1")

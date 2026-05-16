@@ -85,3 +85,4 @@ def main():
             
 main()
 
+print("main version 0.0.1")
