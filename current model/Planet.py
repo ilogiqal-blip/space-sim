@@ -40,4 +40,9 @@ class Planet():
         velocity = self.velocity
         force = 0
         mass = self.mass
+        #print(f"velocity: {velocity}")
+        self.position.x += velocity * pr.get_frame_time()
+
+
+
 print(f"Planet version {Planet_version}")
