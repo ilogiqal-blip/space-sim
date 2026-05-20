@@ -4,15 +4,16 @@ import time
 from Planet import Planet
 from Player import Player
 
-version = "0.0.9"
+version = "0.0.6"
 side_menu = False
 r = 0
 d = 0
 x = 0
 y = 0
 z = 0
-velocity = 0
 direction = 0
+velocity = 0
+direction = pr.Vector3(0,0,0)
 active_field = ""
 
 
@@ -23,6 +24,7 @@ def draw_menu(planets):
     global x
     global y
     global z
+    global direction
     global velocity
     global direction
     global active_field
@@ -32,14 +34,14 @@ def draw_menu(planets):
     mouse_pos = pr.get_mouse_position()
     
     if (70 < mouse_pos.x < 490) and ( 70< mouse_pos.y <220):
-        pr.draw_rectangle_lines(70,70,420,150,pr.WHITE)
+        pr.draw_rectangle_lines(70,70,420,150,pr.GRAY)
         pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
         
         if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
             side_menu = not side_menu
     if side_menu:
-        pr.draw_rectangle(600,70,420,400,pr.GRAY)
-        pr.draw_rectangle_lines(600,70,420,400,pr.WHITE)
+        pr.draw_rectangle(600,70,420,400,pr.Color(50,50,50,125))
+        pr.draw_rectangle_lines(600,70,420,400,pr.GRAY)
         pr.draw_text("Input Planet Parameters", 610, 80, 20, pr.WHITE)
 
         draw_side_menu(mouse_pos, planets)
@@ -71,6 +73,9 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################# Density
         elif (610 < mouse_pos.x < 710) and ( 180 < mouse_pos.y < 200):              
             active_field = "d"
@@ -80,6 +85,9 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################# Position X
         elif (610 < mouse_pos.x < 730) and ( 230 < mouse_pos.y < 250):              
             active_field = "x"
@@ -88,7 +96,10 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)  
+            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE) 
     ############################################################################# Position Y
         elif (610 < mouse_pos.x < 730) and ( 280 < mouse_pos.y < 300):              
             active_field = "y"
@@ -98,6 +109,9 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################## Position Z
         elif (610 < mouse_pos.x < 730) and ( 330 < mouse_pos.y < 350):              
             active_field = "z"
@@ -107,6 +121,9 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################## velocuity input
         elif (610 < mouse_pos.x < 730) and ( 380 < mouse_pos.y < 400):              
             active_field = "velocity"
@@ -115,7 +132,48 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
-            pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)   
+            pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
+            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
+    ############################################################################## direction x input
+        elif (610 < mouse_pos.x <750)  and (430 < mouse_pos.y < 450):
+            active_field = "direction.x"
+            pr.draw_text(f"Direction x: {direction.x}",610,430,30,pr.LIGHTGRAY)
+            pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
+            pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
+            pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
+            pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
+            pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
+            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            #pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            #pr.draw_text(f"z: {direction.z}",810,430,20,pr.WHITE)
+        ############################################################################## direction y input
+        elif (760 < mouse_pos.x <830)  and (430 < mouse_pos.y < 450):
+            active_field = "direction.y"
+            #pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.LIGHTGRAY)
+            pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
+            pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
+            pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
+            pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
+            pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
+            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,30,pr.WHITE)
+            #pr.draw_text(f"z: {direction.z}",810,430,20,pr.WHITE)
+        ############################################################################## direction z input
+        elif (835 < mouse_pos.x <900)  and (430 < mouse_pos.y < 450):
+            active_field = "direction.z"
+            #pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.LIGHTGRAY)
+            pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
+            pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
+            pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
+            pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
+            pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
+            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            #pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,30,pr.WHITE)
+            
+
         else:
             pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
@@ -123,6 +181,9 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
+            pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
             active_field = ""
 ############################################################################## confirm button
     
