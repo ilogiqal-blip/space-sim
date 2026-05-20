@@ -1,7 +1,7 @@
 import pyray as pr 
 import math
 import time
-from Planet import Planet
+from Planet import *
 from Player import Player
 
 version = "0.0.7"
@@ -179,7 +179,7 @@ def draw_side_menu(mouse_pos,planets):
         pr.draw_rectangle(840, 150, 100, 100, pr.DARKGREEN)
         pr.draw_rectangle_lines(840, 150, 100, 100, pr.WHITE)
         pr.draw_text("GO!", 860, 180, 40, pr.WHITE)
-        if r > 0 and d > 0:
+        if r > 0 and d > 0 and (pitch != 0 or yaw != 0):
 
             if (840 < mouse_pos.x < 940) and (150 < mouse_pos.y < 250):
                 pr.draw_rectangle(840, 150, 100, 100, pr.WHITE)
@@ -192,14 +192,13 @@ def draw_side_menu(mouse_pos,planets):
                         pr.Vector3(x,y,z),          #position   [2]
                         velocity,                   #velocity   [3]
                         pr.Color(255,255,0,255),    #color      [4]
-                        yaw,
-                        pitch]                  #direction  [5]
+                        yaw,                        #yaw        [5]
+                        pitch]                      #pitch      [6]
                     
-                    #new_planet : radius, density, position, velocity ,colour , direction
+                    
                     planets.append(new_planet)
                     planet = Planet(new_planet[0], new_planet[1], new_planet[2], new_planet[3], new_planet[5],new_planet[6])
 
-                    #print(f"Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
                     print(f"Planet version {planet.version:5}")
                     print(f"menu version   {version:5}")
             
