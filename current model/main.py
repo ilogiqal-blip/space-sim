@@ -5,7 +5,7 @@ from menu import *
 #print(dir(pr))
 
 
-main_version = "0.0.8"
+main_version = "0.0.9"
 from Player import Player
 from Planet import Planet
 from menu import *
@@ -36,7 +36,7 @@ def main():
                 pr.enable_cursor()
             else:
                 pr.disable_cursor()
-
+                
 
         
 
@@ -48,7 +48,7 @@ def main():
 #############################################################################simulate here
             for obj in objects:
                 planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5])
-                planet.simulate()
+                planet.simulate(objects)
                 #print(obj)
                 obj[2] = planet.position
 #########################################################################################
