@@ -4,7 +4,7 @@ import time
 from Planet import Planet
 from Player import Player
 
-version = "0.0.6"
+version = "0.0.7"
 side_menu = False
 r = 0
 d = 0
@@ -13,9 +13,9 @@ y = 0
 z = 0
 direction = 0
 velocity = 0
-direction = pr.Vector3(0,0,0)
 direction_degrees_x = 0
 direction_degrees_y = 0
+direction = pr.Vector3(0,0,0)
 active_field = ""
 
 
@@ -170,30 +170,38 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
             active_field = ""
 ############################################################################## direction vecter calculation
-        direction.x = math.cos(math.radians(direction_degrees_x))
-        direction.z = -math.cos(math.radians(direction_degrees_x))
-        direction.y = 0
+        yaw = math.radians(direction_degrees_x)
+        pitch = math.radians(direction_degrees_y)
+
+        
 ############################################################################## confirm button
     
         pr.draw_rectangle(840, 150, 100, 100, pr.DARKGREEN)
         pr.draw_rectangle_lines(840, 150, 100, 100, pr.WHITE)
         pr.draw_text("GO!", 860, 180, 40, pr.WHITE)
-        if (840 < mouse_pos.x < 940) and (150 < mouse_pos.y < 250):
-            pr.draw_rectangle(840, 150, 100, 100, pr.WHITE)
-            pr.draw_text("GO!", 860, 180, 40, pr.DARKGREEN)
-            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-                new_planet = [r,d,
-                    pr.Vector3(x,y,z),
-                    velocity,
-                    pr.Color(255,255,0,255),
-                    direction]
-                #new_planet : radius, density, position, velocity ,colour , direction
-                planets.append(new_planet)
-                planet = Planet(new_planet[0], new_planet[1], new_planet[2], new_planet[3], new_planet[5])
+        if r > 0 and d > 0:
 
-                #print(f"Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
-                print(f"Planet version {planet.version:5}")
-                print(f"menu version   {version:5}")
+            if (840 < mouse_pos.x < 940) and (150 < mouse_pos.y < 250):
+                pr.draw_rectangle(840, 150, 100, 100, pr.WHITE)
+                pr.draw_text("GO!", 860, 180, 40, pr.DARKGREEN)
+                if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+
+                    new_planet = [
+                        r,                          #radius     [0]
+                        d,                          #density    [1]
+                        pr.Vector3(x,y,z),          #position   [2]
+                        velocity,                   #velocity   [3]
+                        pr.Color(255,255,0,255),    #color      [4]
+                        yaw,
+                        pitch]                  #direction  [5]
+                    
+                    #new_planet : radius, density, position, velocity ,colour , direction
+                    planets.append(new_planet)
+                    planet = Planet(new_planet[0], new_planet[1], new_planet[2], new_planet[3], new_planet[5],new_planet[6])
+
+                    #print(f"Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
+                    print(f"Planet version {planet.version:5}")
+                    print(f"menu version   {version:5}")
             
 def check_mouse_input():
     global r 

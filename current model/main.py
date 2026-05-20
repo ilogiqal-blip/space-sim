@@ -47,9 +47,10 @@ def main():
 
 #############################################################################simulate here
             for obj in objects:
-                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5])
-                planet.simulate(objects)
+                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5],obj[6])
+                planet.simulate(objects,obj[5],obj[6])
                 #print(obj)
+                
                 obj[2] = planet.position
 #########################################################################################
 
@@ -76,7 +77,7 @@ def main():
 ################################################### Drawing all of the planets in objects[]
         if len(objects) > 0:
             for obj in objects:
-                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5])
+                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5],obj[6])
                 planet.draw(obj[4])
 ###########################################################################################        
         pr.end_mode_3d()
