@@ -5,7 +5,7 @@ Planet_version = "0.0.8"
 
 class Planet():
 
-    def __init__(self,r,D,position,velocity):
+    def __init__(self,r,D,position,velocity,direction):
         self.version = Planet_version
         self.radius = r
         self.density = D
@@ -13,9 +13,8 @@ class Planet():
         self.colour = pr.DARKGREEN
         self.vol = (4/3)*math.pi*math.pow(self.radius,3)
         self.mass = self.vol * self.density
-        self.position = pr.Vector3(position.x,
-                                   position.y,
-                                   position.z)
+        self.position = position
+        self.direction = direction
 
         #print(f" \n Radius inputted: {r}   Density inputted: {D}  Initialised planet mass: {self.mass:25}")
 
@@ -36,12 +35,15 @@ class Planet():
                             50,
                             pr.Color(55,55,55,55))
         
-    def simulate(self):
+    def simulate(self,objects):
         velocity = self.velocity
         force = 0
+        direction = self.direction
         mass = self.mass
-        #print(f"velocity: {velocity}")
         self.position.x += velocity * pr.get_frame_time()
+
+        
+            
 
 
 

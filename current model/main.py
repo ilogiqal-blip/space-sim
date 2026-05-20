@@ -45,13 +45,13 @@ def main():
         if not menu_open: 
             player.update()
 
-            #simulate here
-            #------------#
+#############################################################################simulate here
             for obj in objects:
-                planet = Planet(obj[0],obj[1],obj[2],obj[3])
+                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5])
                 planet.simulate()
+                #print(obj)
                 obj[2] = planet.position
-            #------------#
+#########################################################################################
 
             pr.disable_cursor()
         
@@ -73,11 +73,12 @@ def main():
         pr.begin_mode_3d(camera)
         pr.draw_grid(map_size * 20,1)
 
+################################################### Drawing all of the planets in objects[]
         if len(objects) > 0:
             for obj in objects:
-                planet = Planet(obj[0],obj[1],obj[2],obj[3])
-                planet.draw(pr.Color(obj[3],obj[4],obj[5],obj[6]))
-        
+                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5])
+                planet.draw(obj[4])
+###########################################################################################        
         pr.end_mode_3d()
         if menu_open:
             draw_menu(objects)

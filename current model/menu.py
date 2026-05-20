@@ -73,7 +73,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
-            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
             pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
             pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################# Density
@@ -85,7 +85,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
-            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
             pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
             pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################# Position X
@@ -97,7 +97,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
-            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
             pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
             pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE) 
     ############################################################################# Position Y
@@ -109,7 +109,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
-            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
             pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
             pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################## Position Z
@@ -121,7 +121,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
-            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
             pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
             pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################## velocuity input
@@ -133,7 +133,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"direction x: {direction.x}",610,430,20,pr.WHITE)
+            pr.draw_text(f"Direction x: {direction.x}",610,430,20,pr.WHITE)
             pr.draw_text(f"y: {direction.y}",770,430,20,pr.WHITE)
             pr.draw_text(f"z: {direction.z}",835,430,20,pr.WHITE)
     ############################################################################## direction x input
@@ -197,10 +197,11 @@ def draw_side_menu(mouse_pos,planets):
                 new_planet = [r,d,
                     pr.Vector3(x,y,z),
                     velocity,
-                    255,0,255,255]
-            
+                    pr.Color(255,255,0,255),
+                    direction]
+                #new_planet : radius, density, position, velocity ,colour , direction
                 planets.append(new_planet)
-                planet = Planet(new_planet[0], new_planet[1], new_planet[2], new_planet[3])
+                planet = Planet(new_planet[0], new_planet[1], new_planet[2], new_planet[3], new_planet[5])
 
                 #print(f"Radius inputted: {new_planet[0]}   Density inputted: {new_planet[1]}  Initialised volume: {planet.vol:25}  initialised mass: {planet.mass:25}")
                 print(f"Planet version {planet.version:5}")
