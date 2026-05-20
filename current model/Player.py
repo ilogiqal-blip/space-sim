@@ -9,7 +9,7 @@ class Player():
     def __init__(self,speed):
         self.pos = pr.Vector3(
                             0,
-                            0.5,
+                            20,
                             0
                             )
         self.TotalChangeX = 0

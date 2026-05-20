@@ -223,10 +223,10 @@ def check_mouse_input():
             r = 0
 
     if active_field == "d" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
-        d += 2
+        d += 0.1
         time.sleep(0.05)
     elif active_field == "d" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
-        d -= 2
+        d -= 0.1
         time.sleep(0.05)
         if d < 0:
             d = 0  
@@ -303,10 +303,10 @@ def check_button_input():
             r = 0
 
     if active_field == "d" and pr.is_key_pressed(pr.KEY_EQUAL):
-        d += 1
+        d += 0.05
         time.sleep(0.05)
     elif active_field == "d" and pr.is_key_pressed(pr.KEY_MINUS):
-        d -= 1
+        d -= 0.05
         time.sleep(0.05)
         if d < 0:
             d = 0  

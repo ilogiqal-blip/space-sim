@@ -49,8 +49,7 @@ def main():
             for obj in objects:
                 planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5],obj[6])
                 planet.simulate(objects,obj[5],obj[6])
-                #print(obj)
-                
+
                 obj[2] = planet.position
 #########################################################################################
 
