@@ -46,11 +46,11 @@ def main():
             player.update()
 
 #############################################################################simulate here
-            for obj in objects:
-                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5],obj[6])
-                planet.simulate(objects,obj[5],obj[6])
+            for planet in objects:
+                planet = Planet(planet)
+                planet.simulate(objects)
 
-                obj[2] = planet.position
+                #planet[2] = planet.position
 #########################################################################################
 
             pr.disable_cursor()
@@ -75,9 +75,9 @@ def main():
 
 ################################################### Drawing all of the planets in objects[]
         if len(objects) > 0:
-            for obj in objects:
-                planet = Planet(obj[0],obj[1],obj[2],obj[3],obj[5],obj[6])
-                planet.draw(obj[4])
+            for planet in objects:
+                planet = Planet(planet)
+                planet.draw(planet.color)
 ###########################################################################################        
         pr.end_mode_3d()
         if menu_open:

@@ -6,13 +6,14 @@ from Player import Player
 
 version = "0.0.7"
 side_menu = False
-r = 0
-d = 0
+r = 4
+d = 4
 x = 0
 y = 0
 z = 0
+mass = 0
 direction = 0
-velocity = 0
+speed = 0
 direction_degrees_x = 0
 direction_degrees_y = 0
 direction = pr.Vector3(0,0,0)
@@ -65,7 +66,7 @@ def draw_side_menu(mouse_pos,planets):
         global x
         global y
         global z
-        global velocity
+        global speed
         global direction
         global direction_degrees_x
         global direction_degrees_y
@@ -78,7 +79,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
     ############################################################################# Density
@@ -89,7 +90,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
     ############################################################################# Position X
@@ -100,7 +101,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
     ############################################################################# Position Y
@@ -111,7 +112,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
     ############################################################################## Position Z
@@ -122,13 +123,13 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
-    ############################################################################## velocuity input
+    ############################################################################## speed input
         elif (610 < mouse_pos.x < 730) and ( 380 < mouse_pos.y < 400):              
-            active_field = "velocity"
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 30, pr.LIGHTGRAY)
+            active_field = "speed"
+            pr.draw_text(f"Speed: {speed}", 610, 380, 30, pr.LIGHTGRAY)
             pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
             pr.draw_text(f"Density: {d}", 610, 180, 20, pr.WHITE)
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
@@ -145,7 +146,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
     ############################################################################## direction y input
         elif (610 < mouse_pos.x < 730) and ( 480 < mouse_pos.y < 500):
@@ -156,7 +157,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
     ############################################################################## else
         else:
@@ -165,7 +166,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position x: {x}", 610, 230, 20, pr.WHITE)
             pr.draw_text(f"Position y: {y}", 610, 280, 20, pr.WHITE)
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
-            pr.draw_text(f"Velocity: {velocity}", 610, 380, 20, pr.WHITE)
+            pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
             active_field = ""
@@ -179,28 +180,31 @@ def draw_side_menu(mouse_pos,planets):
         pr.draw_rectangle(840, 150, 100, 100, pr.DARKGREEN)
         pr.draw_rectangle_lines(840, 150, 100, 100, pr.WHITE)
         pr.draw_text("GO!", 860, 180, 40, pr.WHITE)
-        if r > 0 and d > 0 and (pitch != 0 or yaw != 0):
+############################################################################## confirm function
+
+        if r > 0 and d > 0:
 
             if (840 < mouse_pos.x < 940) and (150 < mouse_pos.y < 250):
                 pr.draw_rectangle(840, 150, 100, 100, pr.WHITE)
                 pr.draw_text("GO!", 860, 180, 40, pr.DARKGREEN)
                 if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
 
+
+                    mass = 4/3 * math.pi * math.pow(r,3) * d
+
                     new_planet = [
                         r,                          #radius     [0]
                         d,                          #density    [1]
                         pr.Vector3(x,y,z),          #position   [2]
-                        velocity,                   #velocity   [3]
+                        speed,                      #speed      [3]
                         pr.Color(255,255,0,255),    #color      [4]
                         yaw,                        #yaw        [5]
-                        pitch]                      #pitch      [6]
-                    
-                    
-                    planets.append(new_planet)
-                    planet = Planet(new_planet[0], new_planet[1], new_planet[2], new_planet[3], new_planet[5],new_planet[6])
+                        pitch,                      #pitch      [6]
+                        mass]                       #mass       [7]
 
-                    print(f"Planet version {planet.version:5}")
-                    print(f"menu version   {version:5}")
+                    planets.append(new_planet)
+                    planet = Planet(new_planet)
+
             
 def check_mouse_input():
     global r 
@@ -208,7 +212,7 @@ def check_mouse_input():
     global x
     global y
     global z
-    global velocity
+    global speed
     global direction
     global direction_degrees_x
     global direction_degrees_y
@@ -252,35 +256,35 @@ def check_mouse_input():
         z -= 2
         time.sleep(0.05)
 
-    if active_field == "velocity" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
-        velocity += 2
+    if active_field == "speed" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
+        speed += 2
         time.sleep(0.05)
-    elif active_field == "velocity" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
-        velocity -= 2
+    elif active_field == "speed" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
+        speed -= 2
         time.sleep(0.05)
-        if velocity < 0:
-            velocity = 0
+        if speed < 0:
+            speed = 0
 
     if active_field == "direction_x" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
         direction_degrees_x += 2
         time.sleep(0.05)
-        if direction_degrees_x > 360:
+        if direction_degrees_x > 359:
             direction_degrees_x = 0
     elif active_field == "direction_x" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
         direction_degrees_x -= 2
         time.sleep(0.05)
         if direction_degrees_x < 0:
-            direction_degrees_x = 360
+            direction_degrees_x = 359
     if active_field == "direction_y" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
         direction_degrees_y += 2
         time.sleep(0.05)
-        if direction_degrees_y > 360:
+        if direction_degrees_y > 359:
             direction_degrees_y = 0
     elif active_field == "direction_y" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
         direction_degrees_y -= 2
         time.sleep(0.05)
         if direction_degrees_y < 0:
-            direction_degrees_y = 360
+            direction_degrees_y = 359
 
 def check_button_input():
     global r 
@@ -288,7 +292,7 @@ def check_button_input():
     global x
     global y
     global z
-    global velocity
+    global speed
     global direction
     global direction_degrees_x
     global direction_degrees_y
@@ -332,35 +336,35 @@ def check_button_input():
         z -= 1
         time.sleep(0.05)
 
-    if active_field == "velocity" and pr.is_key_pressed(pr.KEY_EQUAL):
-        velocity += 1
+    if active_field == "speed" and pr.is_key_pressed(pr.KEY_EQUAL):
+        speed += 1
         time.sleep(0.05)
-    elif active_field == "velocity" and pr.is_key_pressed(pr.KEY_MINUS):
-        velocity -= 1
+    elif active_field == "speed" and pr.is_key_pressed(pr.KEY_MINUS):
+        speed -= 1
         time.sleep(0.05)
-        if velocity < 0:
-            velocity = 0
+        if speed < 0:
+            speed = 0
 
     if active_field == "direction_x" and pr.is_key_pressed(pr.KEY_EQUAL):
         direction_degrees_x += 1
         time.sleep(0.05)
-        if direction_degrees_x > 360:
+        if direction_degrees_x > 359:
             direction_degrees_x = 0
     elif active_field == "direction_x" and pr.is_key_pressed(pr.KEY_MINUS):
         direction_degrees_x -= 1
         time.sleep(0.05)
         if direction_degrees_x < 0:
-            direction_degrees_x = 360
+            direction_degrees_x = 359
 
     if active_field == "direction_y" and pr.is_key_pressed(pr.KEY_EQUAL):
         direction_degrees_y += 1
         time.sleep(0.05)
-        if direction_degrees_y > 360:
+        if direction_degrees_y > 359:
             direction_degrees_y = 0
     elif active_field == "direction_y" and pr.is_key_pressed(pr.KEY_MINUS):
         direction_degrees_y -= 1
         time.sleep(0.05)
         if direction_degrees_y < 0:
-            direction_degrees_y = 360
+            direction_degrees_y = 359
 
 print(f"menu version   {version:5}")
