@@ -14,6 +14,7 @@ z = 0
 mass = 0
 direction = 0
 speed = 0
+planet_number = 0
 velocity = pr.Vector3(0,0,0)                   
 direction_degrees_x = 0
 direction_degrees_y = 0
@@ -28,6 +29,7 @@ def draw_menu(planets):
     global x
     global y
     global z
+    global planet_number
     global direction
     global velocity
     global direction
@@ -68,7 +70,8 @@ def draw_side_menu(mouse_pos,planets):
         global y
         global z
         global speed
-        global direction#
+        global planet_number
+        global direction
         global velocity
         global direction_degrees_x
         global direction_degrees_y
@@ -84,6 +87,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################# Density
         elif (610 < mouse_pos.x < 710) and ( 180 < mouse_pos.y < 200):              
             active_field = "d"
@@ -95,6 +99,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################# Position X
         elif (610 < mouse_pos.x < 730) and ( 230 < mouse_pos.y < 250):              
             active_field = "x"
@@ -106,6 +111,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################# Position Y
         elif (610 < mouse_pos.x < 730) and ( 280 < mouse_pos.y < 300):              
             active_field = "y"
@@ -117,6 +123,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################## Position Z
         elif (610 < mouse_pos.x < 730) and ( 330 < mouse_pos.y < 350):              
             active_field = "z"
@@ -128,6 +135,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################## speed input
         elif (610 < mouse_pos.x < 730) and ( 380 < mouse_pos.y < 400):              
             active_field = "speed"
@@ -139,6 +147,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################## direction x input
         elif (610 < mouse_pos.x < 730) and ( 430 < mouse_pos.y < 450):              
             active_field = "direction_x"
@@ -150,6 +159,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################## direction y input
         elif (610 < mouse_pos.x < 730) and ( 480 < mouse_pos.y < 500):
             active_field = "direction_y"
@@ -161,6 +171,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Position z: {z}", 610, 330, 20, pr.WHITE)
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
     ############################################################################## else
         else:
             pr.draw_text(f"Radius: {r}", 610, 130, 20, pr.WHITE)
@@ -171,6 +182,7 @@ def draw_side_menu(mouse_pos,planets):
             pr.draw_text(f"Speed: {speed}", 610, 380, 20, pr.WHITE)
             pr.draw_text(f"Direction x: {direction_degrees_x}", 610, 430, 20, pr.WHITE)
             pr.draw_text(f"Direction y: {direction_degrees_y}", 610, 480, 20, pr.WHITE)
+            pr.draw_text(f"Planet number: {planet_number}", 610, 530, 20, pr.WHITE)
             active_field = ""
 ############################################################################## direction vecter calculation
         yaw = math.radians(direction_degrees_x)
@@ -190,7 +202,7 @@ def draw_side_menu(mouse_pos,planets):
                 pr.draw_rectangle(840, 150, 100, 100, pr.WHITE)
                 pr.draw_text("GO!", 860, 180, 40, pr.DARKGREEN)
                 if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-
+                    planet_number += 1
 
                     mass = 4/3 * math.pi * math.pow(r,3) * d
                     direction_x = math.cos(pitch) * math.sin(yaw)
@@ -210,8 +222,9 @@ def draw_side_menu(mouse_pos,planets):
                         pr.Color(255,255,0,255),    #color      [4]
                         yaw,                        #yaw        [5]
                         pitch,                      #pitch      [6]
-                        mass,
-                        velocity]                       #mass       [7]
+                        mass,                       #mass       [7]
+                        velocity,                   #velocity   [8]
+                        planet_number]              #planet     [9]
 
                     planets.append(new_planet)
                     planet = Planet(new_planet)
@@ -223,6 +236,7 @@ def check_mouse_input():
     global x
     global y
     global z
+    global planet_number
     global speed
     global direction
     global direction_degrees_x
@@ -281,21 +295,25 @@ def check_mouse_input():
         time.sleep(0.05)
         if direction_degrees_x > 359:
             direction_degrees_x = 0
+
     elif active_field == "direction_x" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
         direction_degrees_x -= 2
         time.sleep(0.05)
         if direction_degrees_x < 0:
             direction_degrees_x = 359
+
     if active_field == "direction_y" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
         direction_degrees_y += 2
         time.sleep(0.05)
         if direction_degrees_y > 359:
             direction_degrees_y = 0
+
     elif active_field == "direction_y" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
         direction_degrees_y -= 2
         time.sleep(0.05)
         if direction_degrees_y < 0:
             direction_degrees_y = 359
+
 
 def check_button_input():
     global r 
@@ -303,6 +321,7 @@ def check_button_input():
     global x
     global y
     global z
+    global planet_number
     global speed
     global direction
     global direction_degrees_x
