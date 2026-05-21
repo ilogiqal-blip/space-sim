@@ -22,7 +22,7 @@ def main():
                          60,                    #fov
                         pr.CAMERA_PERSPECTIVE)  #projection
     map_size = 5
-    player = Player(10)
+    player = Player(500)
 
 
     objects = []
@@ -72,7 +72,7 @@ def main():
         pr.begin_drawing()
         pr.clear_background(pr.BLACK)
         pr.begin_mode_3d(camera)
-        pr.draw_grid(map_size * 20,1)
+        pr.draw_grid(map_size * 5,20)
 
 ################################################### Drawing all of the planets in objects[]
         if len(objects) > 0:

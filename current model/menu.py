@@ -204,7 +204,7 @@ def draw_side_menu(mouse_pos,planets):
                 if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
                     planet_number += 1
 
-                    mass = 4/3 * math.pi * math.pow(r,3) * d
+                    mass = 4/3 * math.pi * math.pow(r,3) * d *1000000000
                     direction_x = math.cos(pitch) * math.sin(yaw)
                     direction_y = math.sin(pitch)
                     direction_z = - math.cos(pitch) * math.cos(yaw)
@@ -219,7 +219,7 @@ def draw_side_menu(mouse_pos,planets):
                         d,                          #density    [1]
                         pr.Vector3(x,y,z),          #position   [2]
                         speed,                      #speed      [3]
-                        pr.Color(255,255,0,255),    #color      [4]
+                        pr.Color(120,120,255,255),    #color      [4]
                         yaw,                        #yaw        [5]
                         pitch,                      #pitch      [6]
                         mass,                       #mass       [7]
