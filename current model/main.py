@@ -2,6 +2,7 @@ import pyray as pr
 import math
 import time
 from menu import *
+from Planet import *
 #print(dir(pr))
 
 
@@ -48,9 +49,9 @@ def main():
 #############################################################################simulate here
             for planet in objects:
                 planet = Planet(planet)
-                planet.simulate(objects)
+                planet.simulate(planet,objects)
 
-                #planet[2] = planet.position
+                
 #########################################################################################
 
             pr.disable_cursor()

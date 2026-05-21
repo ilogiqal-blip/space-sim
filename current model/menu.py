@@ -14,6 +14,7 @@ z = 0
 mass = 0
 direction = 0
 speed = 0
+velocity = pr.Vector3(0,0,0)                   
 direction_degrees_x = 0
 direction_degrees_y = 0
 direction = pr.Vector3(0,0,0)
@@ -67,7 +68,8 @@ def draw_side_menu(mouse_pos,planets):
         global y
         global z
         global speed
-        global direction
+        global direction#
+        global velocity
         global direction_degrees_x
         global direction_degrees_y
         global active_field
@@ -191,7 +193,15 @@ def draw_side_menu(mouse_pos,planets):
 
 
                     mass = 4/3 * math.pi * math.pow(r,3) * d
+                    direction_x = math.cos(pitch) * math.sin(yaw)
+                    direction_y = math.sin(pitch)
+                    direction_z = - math.cos(pitch) * math.cos(yaw)
 
+                    velocity = pr.Vector3(
+                        direction_x * speed,
+                        direction_y * speed,
+                        direction_z * speed
+                    )
                     new_planet = [
                         r,                          #radius     [0]
                         d,                          #density    [1]
@@ -200,7 +210,8 @@ def draw_side_menu(mouse_pos,planets):
                         pr.Color(255,255,0,255),    #color      [4]
                         yaw,                        #yaw        [5]
                         pitch,                      #pitch      [6]
-                        mass]                       #mass       [7]
+                        mass,
+                        velocity]                       #mass       [7]
 
                     planets.append(new_planet)
                     planet = Planet(new_planet)
