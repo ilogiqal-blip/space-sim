@@ -73,7 +73,7 @@ def main():
         pr.clear_background(pr.BLACK)
         pr.begin_mode_3d(camera)
         #pr.draw_grid(map_size * 5,20)
-        grid()
+        grid(objects)
 ################################################### Drawing all of the planets in objects[]
         if len(objects) > 0:
             for planet in objects:
@@ -89,22 +89,22 @@ def main():
 
 def grid(planets):
     
-    size = 55
-    distance = 6
+    size = 200
+    distance = 10
     #x = 0 - size/2
     y = 0
     #z = 0 - size/2
 
-    for x in range(-size,size,5):
-        for z in range(-size,size,5):
+    for x in range(-size,size,distance):
+        for z in range(-size,size,distance):
             pr.draw_line_3d(
                         (x,y,z),
                         (x,y,z + distance),
                         pr.WHITE
                         )
             
-    for x in range(-size,size,5):
-        for z in range(-size,size,5):
+    for x in range(-size,size,distance):
+        for z in range(-size,size,distance):
             pr.draw_line_3d(
                         (x,y,z),
                         (x + distance,y,z),
