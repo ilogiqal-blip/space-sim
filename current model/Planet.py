@@ -62,6 +62,7 @@ class Planet():
 
             elif self.planet_No == 2:
                 other = planets[0]
+                
             self.target = pr.Vector3(
                                 other[2].x - self.position.x,
                                 other[2].y - self.position.y,

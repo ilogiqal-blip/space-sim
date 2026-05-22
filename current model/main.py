@@ -10,7 +10,7 @@ main_version = "0.0.9"
 from Player import Player
 from Planet import Planet
 from menu import *
-
+    
 def main():
     pr.init_window(2000,1200,"Simple Game Engine")
     pr.set_target_fps(60)
@@ -72,8 +72,8 @@ def main():
         pr.begin_drawing()
         pr.clear_background(pr.BLACK)
         pr.begin_mode_3d(camera)
-        pr.draw_grid(map_size * 5,20)
-
+        #pr.draw_grid(map_size * 5,20)
+        grid()
 ################################################### Drawing all of the planets in objects[]
         if len(objects) > 0:
             for planet in objects:
@@ -85,7 +85,35 @@ def main():
             draw_menu(objects)
             
         pr.end_drawing()
+
+
+def grid(planets):
+    
+    size = 55
+    distance = 6
+    #x = 0 - size/2
+    y = 0
+    #z = 0 - size/2
+
+    for x in range(-size,size,5):
+        for z in range(-size,size,5):
+            pr.draw_line_3d(
+                        (x,y,z),
+                        (x,y,z + distance),
+                        pr.WHITE
+                        )
             
+    for x in range(-size,size,5):
+        for z in range(-size,size,5):
+            pr.draw_line_3d(
+                        (x,y,z),
+                        (x + distance,y,z),
+                        pr.WHITE
+                        )
+            
+         
+
+
 main()
 
 print(f"main version   {main_version:5}")
