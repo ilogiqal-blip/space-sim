@@ -245,7 +245,7 @@ def draw_side_menu(mouse_pos,planets,camera):
                         d,                          #density    [1]
                         pr.Vector3(x,y,z),          #position   [2]
                         speed,                      #speed      [3]
-                        pr.Color(120,120,255,255),    #color      [4]
+                        pr.Color(0,0,255,255),    #color      [4]
                         yaw,                        #yaw        [5]
                         pitch,                      #pitch      [6]
                         mass,                       #mass       [7]

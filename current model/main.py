@@ -12,7 +12,7 @@ from Planet import Planet
 from menu import *
     
 def main():
-    pr.init_window(2000,1200,"Simple Game Engine")
+    pr.init_window(1600,900,"Simple Game Engine")
     pr.set_target_fps(60)
     pr.rl_set_line_width(3)
     camera = pr.Camera3D(

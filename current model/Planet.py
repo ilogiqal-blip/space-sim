@@ -80,7 +80,7 @@ class Planet():
                 self.velocity.y += self.acceleration.y
                 self.velocity.z += self.acceleration.z
 
-        print(f"planet {self.planet_No} compared planet {other[9]} acceleration {a}")    
+                print(f"planet {self.planet_No} compared planet {other[9]} acceleration {a}")    
 
         self.position.x += self.velocity.x * pr.get_frame_time() 
         self.position.y += self.velocity.y * pr.get_frame_time() 
