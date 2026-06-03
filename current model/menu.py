@@ -22,7 +22,7 @@ direction = pr.Vector3(0,0,0)
 active_field = ""
 
 
-def draw_menu(planets):
+def draw_menu(planets,camera):
     global side_menu
     global r 
     global d
@@ -40,30 +40,50 @@ def draw_menu(planets):
     mouse_pos = pr.get_mouse_position()
     
     if (70 < mouse_pos.x < 490) and ( 70< mouse_pos.y <220):
+        pr.draw_rectangle(70,70,420,150,pr.DARKGRAY)
         pr.draw_rectangle_lines(70,70,420,150,pr.GRAY)
         pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
         
         if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
             side_menu = not side_menu
+    else:
+        pr.draw_rectangle(70,70,420,150,pr.GRAY)
+        pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
+    
+
     if side_menu:
-        pr.draw_rectangle(600,70,420,400,pr.Color(50,50,50,125))
-        pr.draw_rectangle_lines(600,70,420,400,pr.GRAY)
+        pr.draw_rectangle(600,70,420,600,pr.Color(50,50,50,125))
+        pr.draw_rectangle_lines(600,70,420,600,pr.GRAY)
         pr.draw_text("Input Planet Parameters", 610, 80, 20, pr.WHITE)
 
-        draw_side_menu(mouse_pos, planets)
+        draw_side_menu(mouse_pos, planets,camera)
         check_mouse_input()
         check_button_input()
 
 
         pr.draw_rectangle(70,70,420,150,pr.DARKGRAY)
         pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
+    
+
+    
+
+########################################################################## reset button
+    if (70 < mouse_pos.x < 490) and ( 250< mouse_pos.y <400):
+
+        pr.draw_rectangle(70,250,420,150,pr.DARKGRAY)
+        pr.draw_rectangle_lines(70,250,420,150,pr.GRAY)
+        pr.draw_text("reset simulation", 90, 280, 40, pr.WHITE)
+        
+
+        if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+
+            planets.clear()
 
     else:
-        pr.draw_rectangle(70,70,420,150,pr.GRAY)
-        pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
+        pr.draw_rectangle(70,250,420,150,pr.GRAY)
+        pr.draw_text("reset simulation", 90, 280, 40, pr.WHITE)
 
-
-def draw_side_menu(mouse_pos,planets):
+def draw_side_menu(mouse_pos,planets,camera):
         global r 
         global d
         global x
@@ -197,6 +217,12 @@ def draw_side_menu(mouse_pos,planets):
 ############################################################################## confirm function
 
         if r > 0 and d > 0:
+            pr.begin_mode_3d(camera)
+
+            pr.draw_sphere_wires((x, y, z), r,50,25, pr.GREEN)
+
+            pr.end_mode_3d()
+
 
             if (840 < mouse_pos.x < 940) and (150 < mouse_pos.y < 250):
                 pr.draw_rectangle(840, 150, 100, 100, pr.WHITE)

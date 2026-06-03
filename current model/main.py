@@ -21,7 +21,6 @@ def main():
                         (0,1,0),                #up(x,y,z)
                          60,                    #fov
                         pr.CAMERA_PERSPECTIVE)  #projection
-    map_size = 5
     player = Player(500)
 
 
@@ -82,13 +81,13 @@ def main():
 ###########################################################################################        
         pr.end_mode_3d()
         if menu_open:
-            draw_menu(objects)
+            draw_menu(objects,camera)
             
         pr.end_drawing()
 
 
 def grid(planets):
-    
+
     size = 200
     distance = 10
     #x = 0 - size/2
