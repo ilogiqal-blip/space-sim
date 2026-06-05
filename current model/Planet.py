@@ -76,15 +76,15 @@ class Planet():
                                             a * self.target.z / r
                                             )
 
-                self.velocity.x += self.acceleration.x
-                self.velocity.y += self.acceleration.y
-                self.velocity.z += self.acceleration.z
+                self.velocity.x += self.acceleration.x * pr.get_frame_time()
+                self.velocity.y += self.acceleration.y * pr.get_frame_time()
+                self.velocity.z += self.acceleration.z * pr.get_frame_time()
 
                 print(f"planet {self.planet_No} compared planet {other[9]} acceleration {a}")    
 
-        self.position.x += self.velocity.x * pr.get_frame_time() 
-        self.position.y += self.velocity.y * pr.get_frame_time() 
-        self.position.z += self.velocity.z * pr.get_frame_time() 
+        self.position.x += self.velocity.x #* pr.get_frame_time() 
+        self.position.y += self.velocity.y #* pr.get_frame_time() 
+        self.position.z += self.velocity.z #* pr.get_frame_time() 
 
         
 #radius     [0]
