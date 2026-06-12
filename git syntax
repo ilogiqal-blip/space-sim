@@ -1,0 +1,12 @@
+| Type        | Use for                                            |
+| ----------- | -------------------------------------------------- |
+| `feat:`     | New feature                                        |
+| `fix:`      | Bug fix                                            |
+| `refactor:` | Code restructuring without changing behavior       |
+| `chore:`    | Maintenance, dependencies, config, tooling         |
+| `docs:`     | Documentation changes                              |
+| `style:`    | Formatting, whitespace, linting (no logic changes) |
+| `test:`     | Adding or updating tests                           |
+| `perf:`     | Performance improvements                           |
+| `build:`    | Build system or dependency changes                 |
+| `ci:`       | CI/CD workflow changes                             |
