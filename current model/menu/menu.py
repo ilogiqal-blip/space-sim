@@ -2,7 +2,6 @@ import pyray as pr
 import math
 import time
 from Planet import *
-from Player import Player
 
 version = "0.0.7"
 side_menu = False
