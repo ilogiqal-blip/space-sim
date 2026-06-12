@@ -22,11 +22,15 @@ def main():
                         pr.CAMERA_PERSPECTIVE)  #projection
     
     player = Player(500)
-    menu = menu_state()
+    game_menu = menu_state()
     objects = []
-    
+
+    start_game_loop(game_menu,player,objects,camera)
+
+def start_game_loop(menu,player,objects,camera):
 
     while not pr.window_should_close():
+
         if pr.is_key_pressed(pr.KEY_O):
             menu.toggle_menu()
                 
@@ -78,18 +82,6 @@ def main():
             
         pr.end_drawing()
 
-
-
-#radius     [0]
-#density    [1]
-#position   [2]
-#speed      [3]
-#color      [4]
-#yaw        [5]
-#pitch      [6]
-#mass       [7]
-    
-         
-
-
+def render():
+    return 
 main()
