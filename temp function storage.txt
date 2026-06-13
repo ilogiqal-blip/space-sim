@@ -1,4 +1,4 @@
-def check_mouse_input():
+def add_input_mouse():
     
     if active_field == "r" and pr.is_mouse_button_down(pr.MOUSE_BUTTON_LEFT):
         r += 2
@@ -73,7 +73,7 @@ def check_mouse_input():
             direction_degrees_y = 359
 
 
-def check_button_input():
+def add_input_button():
     
     if active_field == "r" and pr.is_key_pressed(pr.KEY_EQUAL):
         r += 1

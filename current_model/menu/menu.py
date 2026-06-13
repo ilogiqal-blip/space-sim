@@ -1,8 +1,7 @@
 import pyray as pr 
-import time
-#from Planet import *
-from .config_menu.config_menu import *
+from .config_menu.config_menu import * 
 from .state import *
+from .config_menu.get_input import *
 
 
 
@@ -12,6 +11,9 @@ class menu():
         self.config_menu = config_menu()
         #self.objects = objects
         self.camera = camera
+        self.input = get_menu_option()
+        self.start_x = 600 + 550
+        self.start_y = 70
 
     
      
@@ -36,9 +38,9 @@ class menu():
     
 
         if self.config_menu_open.menu_open:
-            pr.draw_rectangle(600,70,420,600,pr.Color(50,50,50,125))
-            pr.draw_rectangle_lines(600,70,420,600,pr.GRAY)
-            pr.draw_text("Input Planet Parameters", 610, 80, 20, pr.WHITE)
+            pr.draw_rectangle(self.start_x,self.start_y,420,600,pr.Color(50,50,50,200))
+            pr.draw_rectangle_lines(self.start_x,self.start_y,420,600,pr.GRAY)
+            pr.draw_text("Input Planet Parameters", self.start_x + 10, 80, 20, pr.WHITE)
 
             self.config_menu.draw(mouse_pos,self.camera)
             #check_mouse_input()
