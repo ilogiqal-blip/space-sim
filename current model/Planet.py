@@ -2,26 +2,18 @@ import pyray as pr
 import math
 
 
-Planet_version = "0.0.10"
 
 class Planet():
 
-    def __init__(self,planet):
-        #print(f"creating planet with radius {planet[0]} density {planet[1]} position {planet[2]} speed {planet[3]} color {planet[4]} yaw {planet[5]} pitch {planet[6]} mass {planet[7]}")
-        
-        
-        self.radius = planet[0]
-        self.density = planet[1]
-        self.position = planet[2]
-        self.speed = planet[3]
-        self.color = planet[4]
-        self.yaw = planet[5]
-        self.pitch = planet[6]
-        self.mass = planet[7]
-        self.velocity = planet[8]
-        self.acceleration = pr.Vector3(0,0,0)
-        self.target = pr.Vector3(0,0,0)
-        self.planet_No = planet[9]
+    def __init__(self,radius,position,colour,mass,velocity,planet_id):
+               
+        self.radius = radius
+        self.position = position
+        self.colour = colour
+        self.mass = mass
+        self.velocity = velocity
+        self.acceleration = 0
+        self.id = planet_id
 
 
         
@@ -29,13 +21,13 @@ class Planet():
 
     
 
-    def draw(self,color):
+    def draw(self):
         pr.draw_sphere((self.position.x,
                         self.position.y,
                         self.position.z),
 
                         self.radius,
-                        color)
+                        self.colour)
         
         pr.draw_sphere_wires((self.position.x,
                             self.position.y,
@@ -46,54 +38,49 @@ class Planet():
                             50,
                             pr.Color(55,55,55,55))
         
-    def simulate(self,planet,planets):
+    def calc_a(self,other):
         a = 0
-        G = 6.4730 * (10 **-11)
-        
-
-        for object in planets: #for each planet in planets[] 
-
-            if object[9] != self.planet_No:
- 
-                other =   object
-                self.target = pr.Vector3(
-                                    other[2].x - self.position.x,
-                                    other[2].y - self.position.y,
-                                    other[2].z - self.position.z 
+        G = 6.67430e-11
+        target = pr.Vector3(
+                                    other.position.x - self.position.x,
+                                    other.position.y - self.position.y,
+                                    other.position.z - self.position.z 
                                     )
             
-                r = math.sqrt(self.target.x**2 + self.target.y**2 + self.target.z**2)
+        r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
 
-                if r == 0:
-                    return
+        if r == 0:
+            return None, None, None
         
-                a = (G*other[7])/(r**2)
+        acceleration = (G*other.mass)/(r**2)
+
+        return acceleration,target,r
 
 
-                self.acceleration = pr.Vector3(
-                                            a * self.target.x / r,
-                                            a * self.target.y / r,
-                                            a * self.target.z / r
+
+    def apply_a(self,other):
+        dt = pr.get_frame_time()
+        acceleration,target,r = self.calc_a(other)
+
+        if r == None:
+            return
+
+        acceleration_v = pr.Vector3(
+                                            acceleration * target.x / r,
+                                            acceleration * target.y / r,
+                                            acceleration * target.z / r
                                             )
 
-                self.velocity.x += self.acceleration.x #* pr.get_frame_time()
-                self.velocity.y += self.acceleration.y #* pr.get_frame_time()
-                self.velocity.z += self.acceleration.z #* pr.get_frame_time()
+        self.velocity.x += acceleration_v.x * dt
+        self.velocity.y += acceleration_v.y * dt
+        self.velocity.z += acceleration_v.z * dt
 
-                print(f"planet {self.planet_No} compared planet {other[9]} acceleration {a}")    
 
-        self.position.x += self.velocity.x * pr.get_frame_time() 
-        self.position.y += self.velocity.y * pr.get_frame_time() 
-        self.position.z += self.velocity.z * pr.get_frame_time() 
+    def simulate(self):
+        dt = pr.get_frame_time()
+        self.position.x += self.velocity.x * dt 
+        self.position.y += self.velocity.y * dt 
+        self.position.z += self.velocity.z * dt
+
 
         
-#radius     [0]
-#density    [1]
-#position   [2]
-#speed      [3]
-#color      [4]
-#yaw        [5]
-#pitch      [6]
-#mass       [7]
-    
-print(f"Planet version {Planet_version}")

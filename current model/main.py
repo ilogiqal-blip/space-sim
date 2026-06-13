@@ -1,6 +1,6 @@
 import pyray as pr 
 from menu.menu import *
-from menu.menu_state import *
+from menu.state import *
 from grid.grid import *
 from Player import *
 from Planet import *
@@ -20,27 +20,27 @@ def main():
                         (0,1,0),                #up(x,y,z)
                         60,                     #fov
                         pr.CAMERA_PERSPECTIVE)  #projection
-    
-    player = Player(500)
-    game_menu = menu_state()
     objects = []
+    player = Player(500)
+    main_menu_state = menu_state()
+    main_menu = menu(camera)
 
-    start_game_loop(game_menu,player,objects,camera)
 
-def start_game_loop(menu,player,objects,camera):
+    start_game_loop(main_menu_state,player,objects,camera,main_menu)
+
+def start_game_loop(main_menu_state,player,objects,camera,main_menu):
 
     while not pr.window_should_close():
 
         if pr.is_key_pressed(pr.KEY_O):
-            menu.toggle_menu()
-                
+            main_menu_state.toggle_menu()
 
-        if not menu.menu_open: 
+
+        if not main_menu_state.menu_open: 
             player.update()
 
 #############################################################################simulate here
             for planet in objects:
-                planet = Planet(planet)
                 planet.simulate(planet,objects)
 
                 
@@ -70,15 +70,14 @@ def start_game_loop(menu,player,objects,camera):
 
         if len(objects) > 0:
             for planet in objects:
-                planet = Planet(planet)
                 planet.draw(planet.color)
 
 ########################################################################################### 
        
         pr.end_mode_3d()
 
-        if menu.menu_open:
-            draw_menu(objects,camera)
+        if main_menu_state.menu_open:
+            main_menu.draw_menu()
             
         pr.end_drawing()
 
