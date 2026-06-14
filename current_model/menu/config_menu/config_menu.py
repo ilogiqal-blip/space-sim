@@ -35,6 +35,16 @@ class config_menu():
         pr.draw_rectangle(840, 150, 100, 100, pr.DARKGREEN)
         pr.draw_rectangle_lines(840, 150, 100, 100, pr.WHITE)
         pr.draw_text("GO!", 860, 180, 40, pr.WHITE)
+##############################################################################
+        self.radius += self.input.add_input("r")
+        self.density += self.input.add_input("d")
+        self.position_x += self.input.add_input("x")
+        self.position_y += self.input.add_input("y")
+        self.position_z += self.input.add_input("z")
+        self.speed += self.input.add_input("speed")
+        self.direction_degrees.x += self.input.add_input("direction_x")
+        self.direction_degrees.y += self.input.add_input("direction_y")
+
 ############################################################################## confirm function
 
         if self.radius > 0 and self.density > 0:
