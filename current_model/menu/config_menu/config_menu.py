@@ -32,9 +32,9 @@ class config_menu():
         pr.draw_text(f"Direction y: {self.direction_degrees.y}", self.x_start, self.y_start + 350, self.input.menu_size("direction_y"), self.input.menu_colour("direction_y"))
         pr.draw_text(f"Planet number: {self.planet_number}", self.x_start, self.y_start + 400, 20, pr.WHITE)
  
-        pr.draw_rectangle(840, 150, 100, 100, pr.DARKGREEN)
-        pr.draw_rectangle_lines(840, 150, 100, 100, pr.WHITE)
-        pr.draw_text("GO!", 860, 180, 40, pr.WHITE)
+        pr.draw_rectangle(840+600, 150, 100, 100, pr.DARKGREEN)
+        pr.draw_rectangle_lines(840+600, 150, 100, 100, pr.WHITE)
+        pr.draw_text("GO!", 860+600, 180, 40, pr.WHITE)
 ##############################################################################
         self.radius += self.input.add_input("r")
         self.density += self.input.add_input("d")
