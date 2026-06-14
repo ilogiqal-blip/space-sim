@@ -53,6 +53,8 @@ class Player():
             direction_y,
             direction_z
         )
+        print("delta:", mouse_delta.x, mouse_delta.y)
+        print("angles:", self.TotalChangeX, self.TotalChangeY)
 
         # position movement
 

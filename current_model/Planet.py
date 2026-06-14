@@ -49,7 +49,7 @@ class Planet():
             
         r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
 
-        if r == 0:
+        if r <= 0:
             return None, None, None
         
         acceleration = (G*other.mass)/(r**2)
@@ -76,11 +76,10 @@ class Planet():
         self.velocity.z += acceleration_v.z * dt
 
 
-    def simulate(self):
+    def update(self):
         dt = pr.get_frame_time()
         self.position.x += self.velocity.x * dt 
         self.position.y += self.velocity.y * dt 
         self.position.z += self.velocity.z * dt
-
 
         

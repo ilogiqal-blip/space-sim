@@ -4,6 +4,7 @@ from menu.state import *
 from grid.grid import *
 from Player import *
 from Planet import *
+from collisions import *
 #print(dir(pr))
 
 
@@ -23,7 +24,8 @@ def main():
     objects = []
     player = Player(500)
     main_menu_state = menu_state()
-    main_menu = menu(camera)
+    main_menu = menu(camera,objects)
+    pr.disable_cursor()
 
 
     start_game_loop(main_menu_state,player,objects,camera,main_menu)
@@ -35,30 +37,16 @@ def start_game_loop(main_menu_state,player,objects,camera,main_menu):
         if pr.is_key_pressed(pr.KEY_O):
             main_menu_state.toggle_menu()
 
+            if main_menu_state.menu_open:
+                pr.enable_cursor()
+            else:
+                pr.disable_cursor()
+
 
         if not main_menu_state.menu_open: 
             player.update()
-
-#############################################################################simulate here
-            for planet in objects:
-                planet.simulate(planet,objects)
-
-                
-#########################################################################################
-
-            pr.disable_cursor()
-        
-
-            camera.position = pr.Vector3(
-                player.pos.x,
-                player.pos.y,
-                player.pos.z
-                )
-            camera.target = pr.Vector3(
-                player.pos.x + player.direction.x,
-                player.pos.y + player.direction.y,
-                player.pos.z + player.direction.z
-                )
+            simulate(objects)
+            camera_update(camera,player)
         
 
         pr.begin_drawing()
@@ -66,13 +54,12 @@ def start_game_loop(main_menu_state,player,objects,camera,main_menu):
         pr.begin_mode_3d(camera)
         grid(objects)
 
-################################################### Drawing all of the planets in objects[]
 
         if len(objects) > 0:
             for planet in objects:
-                planet.draw(planet.color)
+                planet.draw()
 
-########################################################################################### 
+
        
         pr.end_mode_3d()
 
@@ -81,6 +68,39 @@ def start_game_loop(main_menu_state,player,objects,camera,main_menu):
             
         pr.end_drawing()
 
-def render():
-    return 
+def simulate(objects):
+    collision = False
+    for planet in objects:
+                for other_planet in objects:
+                    
+                    if planet.id != other_planet.id:
+                        if check_collision(planet,other_planet):
+                            merged_planet = merge_planets(planet,other_planet)
+                            collision = True
+                        else:     
+                            planet.apply_a(other_planet)
+                            
+                    else:
+                        continue
+        planet.update()
+        
+    if collision:   
+        objects.appened(merged_planet)
+        objects.remove(planet)
+        objects.remove(other_planet)
+    
+def camera_update(camera,player):
+
+    camera.position = pr.Vector3(
+                player.pos.x,
+                player.pos.y,
+                player.pos.z
+                )
+    camera.target = pr.Vector3(
+                player.pos.x + player.direction.x,
+                player.pos.y + player.direction.y,
+                player.pos.z + player.direction.z
+                )
+    print("target:", camera.target)
+
 main()

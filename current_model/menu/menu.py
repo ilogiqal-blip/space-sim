@@ -6,10 +6,10 @@ from .config_menu.get_input import *
 
 
 class menu():
-    def __init__(self,camera):
+    def __init__(self,camera,objects):
         self.config_menu_open = menu_state()
-        self.config_menu = config_menu()
-        #self.objects = objects
+        self.config_menu = config_menu(objects)
+        self.objects = objects
         self.camera = camera
         self.input = get_menu_option()
         self.start_x = 600 + 550
@@ -42,7 +42,7 @@ class menu():
             pr.draw_rectangle_lines(self.start_x,self.start_y,420,600,pr.GRAY)
             pr.draw_text("Input Planet Parameters", self.start_x + 10, 80, 20, pr.WHITE)
 
-            self.config_menu.draw(mouse_pos,self.camera)
+            self.config_menu.draw(mouse_pos,self.camera,)
             #check_mouse_input()
             #check_button_input()
 
