@@ -69,25 +69,39 @@ def start_game_loop(main_menu_state,player,objects,camera,main_menu):
         pr.end_drawing()
 
 def simulate(objects):
-    collision = False
+
+    to_append = set()
+    to_remove = set()
+
     for planet in objects:
-                for other_planet in objects:
+
+        for other_planet in objects:
                     
-                    if planet.id != other_planet.id:
-                        if check_collision(planet,other_planet):
-                            merged_planet = merge_planets(planet,other_planet)
-                            collision = True
-                        else:     
-                            planet.apply_a(other_planet)
+            if planet.id != other_planet.id:
+
+                if check_collision(planet,other_planet):
+
+                    merged_planet = merge_planets(planet,other_planet)
+
+                    to_append.add(merged_planet)
+                    to_remove.add(planet)
+                    to_remove.add(other_planet)
+
+                else:
+                    planet.apply_a(other_planet)
                             
-                    else:
-                        continue
+                            
+            else:
+                continue
+
         planet.update()
+
+
+        objects.extend(to_append)
         
-    if collision:   
-        objects.appened(merged_planet)
-        objects.remove(planet)
-        objects.remove(other_planet)
+        for planet in to_remove:
+            objects.remove(planet)
+         
     
 def camera_update(camera,player):
 
