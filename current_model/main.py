@@ -81,7 +81,7 @@ def simulate(objects):
 
                 if check_collision(planet,other_planet):
 
-                    merged_planet = merge_planets(planet,other_planet)
+                    merged_planet = Planet(*merge_planets(planet,other_planet))
 
                     to_append.add(merged_planet)
                     to_remove.add(planet)
@@ -89,11 +89,13 @@ def simulate(objects):
 
                 else:
                     planet.apply_a(other_planet)
-                            
+                         
                             
             else:
                 continue
 
+
+                
         planet.update()
 
 
@@ -115,6 +117,6 @@ def camera_update(camera,player):
                 player.pos.y + player.direction.y,
                 player.pos.z + player.direction.z
                 )
-    print("target:", camera.target)
+
 
 main()

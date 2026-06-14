@@ -81,3 +81,14 @@ class config_menu():
                     )
         
         return self.radius, pr.Vector3(self.position_x,self.position_y,self.position_z), pr.WHITE, mass, velocity, self.planet_id
+    def reset(self):
+        self.radius = 6
+        self.density = 5
+        self.position_x = 0
+        self.position_y = 0
+        self.position_z = 0
+        self.speed = 0
+        self.direction_degrees = pr.Vector2(0,0)
+        self.planet_id = 0
+        self.input = get_menu_option()
+        

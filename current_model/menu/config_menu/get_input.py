@@ -52,12 +52,14 @@ class get_menu_option():
             return small     
         
     def add_input(self,check):
+
         if pr.is_key_pressed(pr.KEY_EQUAL):
             if check == self.get_option_hovered():
                 return int(1)
         elif pr.is_key_pressed(pr.KEY_MINUS):
             if check == self.get_option_hovered():
                 return int(-1)
+            
 
         elif pr.is_mouse_button_down(pr.MOUSE_BUTTON_RIGHT):
             if check == self.get_option_hovered():

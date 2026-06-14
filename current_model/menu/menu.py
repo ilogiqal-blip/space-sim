@@ -64,6 +64,7 @@ class menu():
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
 
                 self.objects.clear()
+                self.config_menu.reset()
 
         else:
             pr.draw_rectangle(70,250,420,150,pr.GRAY)
