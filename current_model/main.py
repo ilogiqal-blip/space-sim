@@ -4,14 +4,13 @@ from menu.state import *
 from grid.grid import *
 from Player import *
 from Planet import *
-from collisions import *
 #print(dir(pr))
 
 
 
 def main():
-
-    pr.init_window(1600,900,"Simple Game Engine")
+    pr.set_config_flags(pr.FLAG_WINDOW_RESIZABLE)
+    pr.init_window(1600,900,"Space sim engine")
     pr.set_target_fps(60)
     pr.rl_set_line_width(3)
 
@@ -47,6 +46,7 @@ def start_game_loop(main_menu_state,player,objects,camera,main_menu):
             player.update()
             simulate(objects)
             camera_update(camera,player)
+            
         
 
         pr.begin_drawing()
@@ -70,39 +70,24 @@ def start_game_loop(main_menu_state,player,objects,camera,main_menu):
 
 def simulate(objects):
 
-    to_append = set()
-    to_remove = set()
-
     for planet in objects:
 
         for other_planet in objects:
                     
             if planet.id != other_planet.id:
 
-                if check_collision(planet,other_planet):
-
-                    merged_planet = Planet(*merge_planets(planet,other_planet))
-
-                    to_append.add(merged_planet)
-                    to_remove.add(planet)
-                    to_remove.add(other_planet)
-
-                else:
                     planet.apply_a(other_planet)
-                         
-                            
+                                         
             else:
                 continue
 
 
                 
         planet.update()
-
-
-        objects.extend(to_append)
         
-        for planet in to_remove:
-            objects.remove(planet)
+    
+
+    
          
     
 def camera_update(camera,player):

@@ -71,15 +71,15 @@ class Planet():
                                             acceleration * target.z / r
                                             )
 
-        self.velocity.x += acceleration_v.x * dt
-        self.velocity.y += acceleration_v.y * dt
-        self.velocity.z += acceleration_v.z * dt
+        self.velocity.x += acceleration_v.x * dt 
+        self.velocity.y += acceleration_v.y * dt 
+        self.velocity.z += acceleration_v.z * dt 
 
 
     def update(self):
         dt = pr.get_frame_time()
-        self.position.x += self.velocity.x * dt 
-        self.position.y += self.velocity.y * dt 
-        self.position.z += self.velocity.z * dt
+        self.position.x += self.velocity.x * dt * 5
+        self.position.y += self.velocity.y * dt * 5
+        self.position.z += self.velocity.z * dt * 5
 
         
