@@ -2,6 +2,7 @@ import pyray as pr
 import math
 
 
+          
 def check_collision(objects):
     for i in range(len(objects)):
         planet = objects[i]

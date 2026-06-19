@@ -7,6 +7,7 @@ from entities.Planet import *
 from physics.simulate import *
 from physics.collisions import *
 from UI.main_UI import *
+from update_event import *
 
 class Game():
 
@@ -28,19 +29,13 @@ class Game():
 
         while not pr.window_should_close():
 
-            if pr.is_key_pressed(pr.KEY_O):
-                self.ui.main_menu_state.toggle_menu()
-
-                if self.ui.main_menu_state.menu_open:
-                    pr.enable_cursor()
-                else:
-                    pr.disable_cursor()
+            update_event_menu(self.ui)
 
 
-            if not self.ui.main_menu_state.menu_open: 
+            if not self.ui.main_menu.state.menu_open: 
                 self.player.update()
                 simulate(self.objects)
-                self.camera_update()
+                self.player.camera_update(self.camera)
             
         
 
@@ -63,16 +58,3 @@ class Game():
             self.ui.draw_UI()
                 
             pr.end_drawing()
-
-    def camera_update(self):
-
-        self.camera.position = pr.Vector3(
-                    self.player.pos.x,
-                    self.player.pos.y,
-                    self.player.pos.z
-                    )
-        self.camera.target = pr.Vector3(
-                    self.player.pos.x + self.player.direction.x,
-                    self.player.pos.y + self.player.direction.y,
-                    self.player.pos.z + self.player.direction.z
-                    )

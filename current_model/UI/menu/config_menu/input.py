@@ -1,7 +1,7 @@
 import pyray as pr
 
 
-class get_menu_option():
+class get_config_menu_option():
 
     def __init__(self):
         self.start_x = 610 + 550
@@ -10,26 +10,28 @@ class get_menu_option():
         
 
     def get_option_hovered(self):
-        self.mouse_pos = pr.get_mouse_position()
+        mouse_pos = pr.get_mouse_position()
 
-        if (self.start_x < self.mouse_pos.x < self.start_x + 100) and (self.start_y < self.mouse_pos.y < self.start_y + 20):
+        if (self.start_x < mouse_pos.x < self.start_x + 100) and (self.start_y < mouse_pos.y < self.start_y + 20):
             return "r"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 100) and (self.start_y + 50 < self.mouse_pos.y < self.start_y + 70):              
+        elif (self.start_x < mouse_pos.x < self.start_x + 100) and (self.start_y + 50 < mouse_pos.y < self.start_y + 70):              
             return "d"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 120) and (self.start_y + 100 < self.mouse_pos.y < self.start_y + 120):              
+        elif (self.start_x < mouse_pos.x < self.start_x + 120) and (self.start_y + 100 < mouse_pos.y < self.start_y + 120):              
             return "x"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 120) and (self.start_y + 150 < self.mouse_pos.y < self.start_y + 170):              
+        elif (self.start_x < mouse_pos.x < self.start_x + 120) and (self.start_y + 150 < mouse_pos.y < self.start_y + 170):              
             return "y"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 120) and (self.start_y + 200 < self.mouse_pos.y < self.start_y + 220):              
+        elif (self.start_x < mouse_pos.x < self.start_x + 120) and (self.start_y + 200 < mouse_pos.y < self.start_y + 220):              
             return "z"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 120) and (self.start_y + 250 < self.mouse_pos.y < self.start_y + 270):              
+        elif (self.start_x < mouse_pos.x < self.start_x + 120) and (self.start_y + 250 < mouse_pos.y < self.start_y + 270):              
             return "speed"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 120) and (self.start_y + 300 < self.mouse_pos.y < self.start_y + 320):              
+        elif (self.start_x < mouse_pos.x < self.start_x + 120) and (self.start_y + 300 < mouse_pos.y < self.start_y + 320):              
             return "direction_x"
-        elif (self.start_x < self.mouse_pos.x < self.start_x + 120) and (self.start_y + 350 < self.mouse_pos.y < self.start_y + 370):
+        elif (self.start_x < mouse_pos.x < self.start_x + 120) and (self.start_y + 350 < mouse_pos.y < self.start_y + 370):
             return "direction_y"
-        elif (70 < self.mouse_pos.x < 490) and ( 70< self.mouse_pos.y <220):
+        elif (70 < mouse_pos.x < 490) and ( 70< mouse_pos.y <220):
             return "create new planet"
+        elif (1440 < mouse_pos.x < 1540) and (150 < mouse_pos.y < 250):
+            return "GO"
         
 
     def menu_colour(self,menu_option):

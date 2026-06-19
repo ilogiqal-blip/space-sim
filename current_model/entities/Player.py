@@ -77,5 +77,17 @@ class Player():
         self.pos.z += strafe * + movement_x * speed 
         #up/down    
         self.pos.y += up * speed
+
+    def camera_update(self,camera):
+
+        camera.position = pr.Vector3(
+                        self.pos.x,
+                        self.pos.y,
+                        self.pos.z
+                        )
+        camera.target = pr.Vector3(
+                        self.pos.x + self.direction.x,
+                        self.pos.y + self.direction.y,
+                        self.pos.z + self.direction.z
+                        )
         
-print(f"Player version {Player_version:5}")

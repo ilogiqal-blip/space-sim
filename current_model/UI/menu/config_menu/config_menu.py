@@ -2,6 +2,7 @@ import pyray as pr
 import math
 from entities.Planet import *
 from .input import *
+from ..state import *
 
 
 
@@ -16,12 +17,13 @@ class config_menu():
         self.speed = 0
         self.direction_degrees = pr.Vector2(0,0)
         self.planet_id = 0
-        self.input = get_menu_option()
+        self.input = get_config_menu_option()
         self.x_start = 610 + 550
         self.y_start = 130
         self.objects = objects
+        self.state = menu_state()
     
-    def draw(self,mouse_pos,camera):
+    def draw(self,camera):
 
         pr.draw_text(f"Radius: {self.radius}", self.x_start, self.y_start, self.input.menu_size("r"), self.input.menu_colour("r"))
         pr.draw_text(f"Density: {self.density}", self.x_start, self.y_start + 50, self.input.menu_size("d"), self.input.menu_colour("d"))
@@ -50,7 +52,7 @@ class config_menu():
             pr.end_mode_3d()
 ############################################################################## confirm function
 
-            if (1440 < mouse_pos.x < 1540) and (150 < mouse_pos.y < 250):
+            if self.input.get_option_hovered() == "GO":
                 
                 pr.draw_rectangle(1440, 150, 100, 100, pr.WHITE)
                 pr.draw_text("GO!", 1460, 180, 40, pr.DARKGREEN)
@@ -82,7 +84,7 @@ class config_menu():
         
         return self.radius, pr.Vector3(self.position_x,self.position_y,self.position_z), pr.WHITE, mass, velocity, self.planet_id
      
-    def reset(self):
+    def config_reset(self):
         self.radius = 6
         self.density = 5
         self.position_x = 0
@@ -91,5 +93,5 @@ class config_menu():
         self.speed = 0
         self.direction_degrees = pr.Vector2(0,0)
         self.planet_id = 0
-        self.input = get_menu_option()
+        self.input = get_config_menu_option()
         
