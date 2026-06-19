@@ -1,18 +1,29 @@
 import pyray as pr
 import math
-def check_collision(p1,p2):
-        target = pr.Vector3(
-                                    p2.position.x - p1.position.x,
-                                    p2.position.y - p1.position.y,
-                                    p2.position.z - p1.position.z 
-                                    )
-            
-        r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
-        if r <= p1.radius + p2.radius:
-            return True
-        else:
-            return False
 
+
+def check_collision(objects):
+    for i in range(len(objects)):
+        planet = objects[i]
+        
+        for j in range(i+1,len(objects)):
+            other = objects[j]
+             
+            if planet.id != other.id:
+
+                target = pr.Vector3(
+                                    other.position.x - planet.position.x,
+                                    other.position.y - planet.position.y,
+                                    other.position.z - planet.position.z 
+                                    )
+                
+                r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
+
+                if r <= planet.radius + other.radius:
+                    return True
+                else:
+                    return False
+             
 
 def merge_planets(p1,p2):
         

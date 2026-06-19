@@ -1,4 +1,4 @@
-from menu.state import * 
+from ..state import * 
 import pyray as pr
 
 class collision_menu():

@@ -1,7 +1,7 @@
 import pyray as pr
 import math
-from Planet import *
-from .get_input import *
+from entities.Planet import *
+from .input import *
 
 
 
@@ -81,6 +81,7 @@ class config_menu():
                     )
         
         return self.radius, pr.Vector3(self.position_x,self.position_y,self.position_z), pr.WHITE, mass, velocity, self.planet_id
+     
     def reset(self):
         self.radius = 6
         self.density = 5

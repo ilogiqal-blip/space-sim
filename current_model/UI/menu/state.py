@@ -1,4 +1,3 @@
-import pyray as pr
 
 class menu_state():
 

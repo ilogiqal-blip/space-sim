@@ -1,13 +1,14 @@
 import pyray as pr 
-from .config_menu.config_menu import * 
-from .state import *
-from .config_menu.get_input import *
+from ..config_menu.config_menu import * 
+from ..state import *
+from ..config_menu.input import *
 
 
 
 class menu():
+
     def __init__(self,camera,objects):
-        self.config_menu_open = menu_state()
+        self.config_menu_state = menu_state()
         self.config_menu = config_menu(objects)
         self.objects = objects
         self.camera = camera
@@ -22,33 +23,35 @@ class menu():
     
         pr.draw_rectangle(50,50,460,700,pr.Color(50,50,50,125))
         pr.draw_rectangle_lines(50,50,460,700,pr.DARKGRAY)
-
+ 
         mouse_pos = pr.get_mouse_position()
-    
+
         if (70 < mouse_pos.x < 490) and ( 70< mouse_pos.y <220):
             pr.draw_rectangle(70,70,420,150,pr.DARKGRAY)
             pr.draw_rectangle_lines(70,70,420,150,pr.GRAY)
             pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
         
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-                self.config_menu_open.toggle_side_menu()
+                self.config_menu_state.toggle_side_menu()
         else:
             pr.draw_rectangle(70,70,420,150,pr.GRAY)
             pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
     
 
-        if self.config_menu_open.menu_open:
+
+        if self.config_menu_state.menu_open:
             pr.draw_rectangle(self.start_x,self.start_y,420,600,pr.Color(50,50,50,200))
             pr.draw_rectangle_lines(self.start_x,self.start_y,420,600,pr.GRAY)
             pr.draw_text("Input Planet Parameters", self.start_x + 10, 80, 20, pr.WHITE)
 
-            self.config_menu.draw(mouse_pos,self.camera,)
+            self.config_menu.draw(mouse_pos,self.camera)
             #check_mouse_input()
             #check_button_input()
 
 
             pr.draw_rectangle(70,70,420,150,pr.DARKGRAY)
             pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
+        
     
 
     
