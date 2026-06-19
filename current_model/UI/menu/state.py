@@ -7,8 +7,6 @@ class menu_state():
     def toggle_menu(self):
         self.menu_open  = not self.menu_open
 
-    def toggle_side_menu(self):
-        self.menu_open = not self.menu_open
 
     
     

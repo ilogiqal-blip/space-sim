@@ -1,4 +1,5 @@
 import pyray as pr
+from physics.collisions import *
 
 def update_event_menu(ui):
 
@@ -13,7 +14,10 @@ def update_event_menu(ui):
     if not ui.main_menu.state.menu_open:
         ui.config_menu.state.menu_open = False
           
-
+def update_event_collision(ui):
+    
+    if check_collision:
+        ui.collision_menu.state.toggle_menu()
 
 
     
