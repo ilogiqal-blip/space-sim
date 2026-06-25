@@ -4,6 +4,7 @@ from game import *
 
 
 
+
 def main():
 
     pr.set_config_flags(pr.FLAG_WINDOW_RESIZABLE)

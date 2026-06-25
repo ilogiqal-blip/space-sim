@@ -35,7 +35,7 @@ class Game():
             if not self.ui.main_menu.state.menu_open: 
                 self.player.update()
                 simulate(self.objects)
-                update_event_collision(self.ui)
+                update_event_collision(self.ui,self.objects)
                 self.player.camera_update(self.camera)
             
         

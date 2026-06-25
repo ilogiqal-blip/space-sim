@@ -31,7 +31,7 @@ class menu():
             pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
         
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
-                config_menu.state.toggle_menu()
+                config_menu.state.toggle_state()
         else:
             pr.draw_rectangle(70,70,420,150,pr.GRAY)
             pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)

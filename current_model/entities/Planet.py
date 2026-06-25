@@ -39,7 +39,7 @@ class Planet():
                             pr.Color(55,55,55,55))
         
     def calc_a(self,other):
-        a = 0
+        
         G = 6.67430e-11
         target = pr.Vector3(
                                     other.position.x - self.position.x,
@@ -78,8 +78,8 @@ class Planet():
 
     def update(self):
         dt = pr.get_frame_time()
-        self.position.x += self.velocity.x * dt * 5
-        self.position.y += self.velocity.y * dt * 5
-        self.position.z += self.velocity.z * dt * 5
+        self.position.x += self.velocity.x * dt
+        self.position.y += self.velocity.y * dt
+        self.position.z += self.velocity.z * dt
 
         
