@@ -9,7 +9,7 @@ class collision_menu():
         self.width = pr.get_screen_width()
         self.menu_open = menu_state()
         self.screen_size = pr.Vector2(self.width, self.height)
-        self.menu_size = pr.Vector2(100, 100)
+        self.menu_size = pr.Vector2(400, 400)
         self.state = menu_state()
 
     def draw_menu(self):

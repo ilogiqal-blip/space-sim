@@ -7,10 +7,12 @@ from .menu.collisions_menu.collision_menu import *
 class UI():
     
     def __init__(self,camera,objects):
+        
         self.main_menu = menu(objects)
-        self.config_menu = config_menu(objects)
-        self.camera = camera
         self.collision_menu = collision_menu()
+        self.config_menu = config_menu(objects,self.collision_menu)
+        self.camera = camera
+        
 
 
     def draw_UI(self):

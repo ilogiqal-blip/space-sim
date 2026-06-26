@@ -32,7 +32,7 @@ class Game():
             update_event_menu(self.ui)
 
 
-            if not self.ui.main_menu.state.menu_open: 
+            if not self.ui.main_menu.state.menu_open and not self.ui.collision_menu.state.menu_open:
                 self.player.update()
                 simulate(self.objects)
                 update_event_collision(self.ui,self.objects)

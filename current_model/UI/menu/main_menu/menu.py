@@ -2,6 +2,7 @@ import pyray as pr
 from ..config_menu.config_menu import * 
 from ..state import *
 from .input import *
+from entities.Presets import *
 
 
 
@@ -14,6 +15,7 @@ class menu():
         self.start_y = 70
         self.input = get_main_menu_option()
         self.state = menu_state()
+        self.presets = Preset(self.objects)
 
     
      
@@ -54,6 +56,22 @@ class menu():
         else:
             pr.draw_rectangle(70,250,420,150,pr.GRAY)
             pr.draw_text("reset simulation", 90, 280, 40, pr.WHITE)
+
+########################################################################## preset button
+        if self.input.get_option_hovered() == "preset":
+
+            pr.draw_rectangle(70,430,420,150,pr.DARKGRAY)
+            pr.draw_rectangle_lines(70,430,420,150,pr.GRAY)
+            pr.draw_text("preset 1", 90, 450, 40, pr.WHITE)
+        
+
+            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+
+                self.presets.create_planets()
+
+        else:
+            pr.draw_rectangle(70,430,420,150,pr.GRAY)
+            pr.draw_text("preset 1", 90, 450, 40, pr.WHITE)
 
 
 

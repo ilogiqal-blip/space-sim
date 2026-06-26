@@ -8,7 +8,7 @@ from ..state import *
 
 class config_menu():
 
-    def __init__(self,objects):
+    def __init__(self,objects,collision_menu):
         self.radius = 6
         self.density = 5
         self.position_x = 0
@@ -22,6 +22,7 @@ class config_menu():
         self.y_start = 130
         self.objects = objects
         self.state = menu_state()
+        self.collision_menu = collision_menu
     
     def draw(self,camera):
 
@@ -94,4 +95,6 @@ class config_menu():
         self.direction_degrees = pr.Vector2(0,0)
         self.planet_id = 0
         self.input = get_config_menu_option()
+        self.collision_menu.state.toggle_state()
+        
         
