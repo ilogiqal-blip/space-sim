@@ -2,7 +2,7 @@ import pyray as pr
 from ..config_menu.config_menu import * 
 from ..state import *
 from .input import *
-from entities.Presets import *
+from Presets.Preset import *
 
 
 
@@ -15,7 +15,7 @@ class menu():
         self.start_y = 70
         self.input = get_main_menu_option()
         self.state = menu_state()
-        self.presets = Preset(self.objects)
+        self.preset = Preset()
 
     
      
@@ -67,7 +67,8 @@ class menu():
 
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
 
-                self.presets.create_planets()
+                preset = self.preset.load("preset_1")
+                self.objects.extend(preset.planets)
 
         else:
             pr.draw_rectangle(70,430,420,150,pr.GRAY)

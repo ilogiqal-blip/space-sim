@@ -47,7 +47,7 @@ class Planet():
                                     other.position.z - self.position.z 
                                     )
             
-        r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
+        r = math.sqrt(target.x**2 + target.y**2 + target.z**2) #km
 
         if r <= 0:
             return None, None, None

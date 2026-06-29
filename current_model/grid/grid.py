@@ -1,12 +1,13 @@
 import pyray as pr
 
 def grid(planets):
+    count = 0
 
-    size = 200
-    distance = 10
-    #x = 0 - size/2
+    size = 200 #km
+    distance = 20 #km
+    
     y = 0
-    #z = 0 - size/2
+    
 
     for x in range(-size,size,distance):
         for z in range(-size,size,distance):

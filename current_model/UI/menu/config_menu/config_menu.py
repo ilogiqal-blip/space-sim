@@ -26,15 +26,15 @@ class config_menu():
     
     def draw(self,camera):
 
-        pr.draw_text(f"Radius: {self.radius}", self.x_start, self.y_start, self.input.menu_size("r"), self.input.menu_colour("r"))
-        pr.draw_text(f"Density: {self.density}", self.x_start, self.y_start + 50, self.input.menu_size("d"), self.input.menu_colour("d"))
-        pr.draw_text(f"Position x: {self.position_x}", self.x_start, self.y_start + 100, self.input.menu_size("x"), self.input.menu_colour("x"))
-        pr.draw_text(f"Position y: {self.position_y}", self.x_start, self.y_start + 150, self.input.menu_size("y"), self.input.menu_colour("y"))
-        pr.draw_text(f"Position z: {self.position_z}", self.x_start, self.y_start + 200, self.input.menu_size("z"), self.input.menu_colour("z"))
-        pr.draw_text(f"Speed: {self.speed}", self.x_start, self.y_start + 250, self.input.menu_size("speed"), self.input.menu_colour("speed"))
-        pr.draw_text(f"Direction x: {self.direction_degrees.x}", self.x_start, self.y_start + 300, self.input.menu_size("direction_x"), self.input.menu_colour("direction_x"))
-        pr.draw_text(f"Direction y: {self.direction_degrees.y}", self.x_start, self.y_start + 350, self.input.menu_size("direction_y"), self.input.menu_colour("direction_y"))
-        pr.draw_text(f"Planet ID: {self.planet_id}", self.x_start, self.y_start + 400, 20, pr.WHITE)
+        pr.draw_text(f"Radius:      {self.radius}",                 self.x_start, self.y_start,       self.input.menu_size("r"), self.input.menu_colour("r"))
+        pr.draw_text(f"Density:     {self.density}",                self.x_start, self.y_start + 50,  self.input.menu_size("d"), self.input.menu_colour("d"))
+        pr.draw_text(f"Position x:  {self.position_x}",             self.x_start, self.y_start + 100, self.input.menu_size("x"), self.input.menu_colour("x"))
+        pr.draw_text(f"Position y:  {self.position_y}",             self.x_start, self.y_start + 150, self.input.menu_size("y"), self.input.menu_colour("y"))
+        pr.draw_text(f"Position z:  {self.position_z}",             self.x_start, self.y_start + 200, self.input.menu_size("z"), self.input.menu_colour("z"))
+        pr.draw_text(f"Speed:       {self.speed}",                  self.x_start, self.y_start + 250, self.input.menu_size("speed"), self.input.menu_colour("speed"))
+        pr.draw_text(f"Direction x: {self.direction_degrees.x}",    self.x_start, self.y_start + 300, self.input.menu_size("direction_x"), self.input.menu_colour("direction_x"))
+        pr.draw_text(f"Direction y: {self.direction_degrees.y}",    self.x_start, self.y_start + 350, self.input.menu_size("direction_y"), self.input.menu_colour("direction_y"))
+        pr.draw_text(f"Planet ID:   {self.planet_id}",              self.x_start, self.y_start + 400, 20, pr.WHITE)
  
         
 ##############################################################################
