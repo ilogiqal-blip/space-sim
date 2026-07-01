@@ -3,8 +3,8 @@ import pyray as pr
 def grid(planets):
     count = 0
 
-    size = 200 #km
-    distance = 20 #km
+    size = 200 #Mm
+    distance = 20 #Mm
     
     y = 0
     

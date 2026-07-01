@@ -7,12 +7,12 @@ class Planet():
 
     def __init__(self,radius,position,colour,mass,velocity,planet_id):
                
-        self.radius = radius
-        self.position = position
-        self.colour = colour
-        self.mass = mass
-        self.velocity = velocity
-        self.acceleration = 0
+        self.radius = radius   #Mm
+        self.position = position #Mm
+        self.colour = colour 
+        self.mass = mass #kg
+        self.velocity = velocity #Mm/s
+        self.acceleration = 0 
         self.id = planet_id
 
 
@@ -39,8 +39,8 @@ class Planet():
                             pr.Color(55,55,55,55))
         
     def calc_a(self,other):
-        
-        G = 6.67430e-11
+
+        G = 6.674e-29  # Mm^3 * kg^-1 * s^-2
         target = pr.Vector3(
                                     other.position.x - self.position.x,
                                     other.position.y - self.position.y,
@@ -58,8 +58,7 @@ class Planet():
 
 
 
-    def apply_a(self,other):
-        dt = pr.get_frame_time()
+    def apply_a(self,other,dt):
         acceleration,target,r = self.calc_a(other)
 
         if r == None:
@@ -76,8 +75,7 @@ class Planet():
         self.velocity.z += acceleration_v.z * dt 
 
 
-    def update(self):
-        dt = pr.get_frame_time()
+    def update(self,dt):
         self.position.x += self.velocity.x * dt
         self.position.y += self.velocity.y * dt
         self.position.z += self.velocity.z * dt
