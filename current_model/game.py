@@ -4,10 +4,11 @@ from UI.menu.state import *
 from grid.grid import *
 from entities.Player import *
 from entities.Planet import *
-from physics.simulate import *
+from physics.simulation.simulate import *
 from physics.collisions import *
 from UI.main_UI import *
 from update_event import *
+from physics.simulation.simulate_settings import *
 
 class Game():
 
@@ -23,6 +24,7 @@ class Game():
         self.objects = []
         self.player = Player(500)
         self.ui = UI(self.camera,self.objects)
+        self.sim_settings = Sim_settings()
         pr.disable_cursor()
 
     def start_game_loop(self):
@@ -30,11 +32,12 @@ class Game():
         while not pr.window_should_close():
 
             update_event_menu(self.ui)
+            update_event_timescale(self.sim_settings)
 
 
             if not self.ui.main_menu.state.menu_open and not self.ui.collision_menu.state.menu_open:
                 self.player.update()
-                simulate(self.objects)
+                simulate(self.objects,self.sim_settings)
                 update_event_collision(self.ui,self.objects)
                 self.player.camera_update(self.camera)
             
@@ -56,6 +59,6 @@ class Game():
        
             pr.end_mode_3d()
 
-            self.ui.draw_UI()
+            self.ui.draw_UI(self.sim_settings)
                 
             pr.end_drawing()

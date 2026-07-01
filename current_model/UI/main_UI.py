@@ -15,9 +15,9 @@ class UI():
         
 
 
-    def draw_UI(self):
+    def draw_UI(self,sim_settings):
 
-
+        pr.draw_text(f"time_scale = x{sim_settings.time_scale}", 10, 10, 20, pr.WHITE)
         if self.main_menu.state.menu_open:
             self.main_menu.draw_menu(self.config_menu)
 

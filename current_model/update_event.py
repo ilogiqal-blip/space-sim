@@ -20,7 +20,13 @@ def update_event_collision(ui,objects):
     if check_collision(objects):
         if not ui.collision_menu.state.menu_open:
             ui.collision_menu.state.toggle_state()
-    
+
+def update_event_timescale(sim_settings):
+
+    if pr.is_key_pressed(pr.KEY_RIGHT):
+         sim_settings.time_scale *= 10
+    if pr.is_key_pressed(pr.KEY_LEFT):
+         sim_settings.time_scale /= 10
         
 
 
