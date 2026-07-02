@@ -97,6 +97,6 @@ class config_menu():
         self.direction_degrees = pr.Vector2(0,0)
         self.planet_id = 0
         self.input = get_config_menu_option()
-        self.collision_menu.state.toggle_state()
+        self.collision_menu.state.menu_open = False
         
         
