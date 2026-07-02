@@ -22,39 +22,46 @@ def update_event_collision(ui,objects):
             ui.collision_menu.state.toggle_state()
 
 def update_event_sim_settings(sim_settings):
-    change = None
-    mode = sim_settings.get_mode()
+     change = None
+     mode = sim_settings.get_mode()
 
-    if pr.is_key_pressed(pr.KEY_DOWN) and (sim_settings.mode_value < len(sim_settings.mode)):
-         sim_settings.mode_value += 1
-    elif pr.is_key_pressed(pr.KEY_UP) and (sim_settings.mode_value > 0):
-         sim_settings.mode_value -= 1
+     if pr.is_key_pressed(pr.KEY_DOWN) and (sim_settings.mode_value < len(sim_settings.mode) - 1):
+          sim_settings.mode_value += 1
+     elif pr.is_key_pressed(pr.KEY_UP) and (sim_settings.mode_value > 0):
+          sim_settings.mode_value -= 1
 
 
-    if pr.is_key_pressed(pr.KEY_RIGHT):
-         change = "increase"
-    elif pr.is_key_pressed(pr.KEY_LEFT):
-         change = "decrease"
-    else:
+     if pr.is_key_pressed(pr.KEY_RIGHT):
+          change = "increase"
+     elif pr.is_key_pressed(pr.KEY_LEFT):
+          change = "decrease"
+     else:
          change = None
 
-    if mode == "time_scale":
-         if change == "increase":
-              sim_settings.time_scale *= 10
-         elif change == "decrease":
-              sim_settings.time_scale /= 10 
+     if mode == "time_scale":
+          if change == "increase":
+               sim_settings.time_scale *= 10
+          elif change == "decrease":
+               sim_settings.time_scale /= 10 
 
-    elif mode == "substeps":
-         if change == "increase":
-              sim_settings.substeps += 10
-         elif change == "decrease" and sim_settings.substeps > 10:
-              sim_settings.substeps -= 10
+     elif mode == "substeps":
+          if change == "increase":
+               sim_settings.substeps += 10
+          elif change == "decrease" and sim_settings.substeps > 10:
+               sim_settings.substeps -= 10
 
-    elif mode == "display_scale":
-         if change == "increase":
-              sim_settings.display_scale *= 2
-         elif change == "decrease":
-              sim_settings.display_scale /= 2   
+     elif mode == "display_scale":
+          if change == "increase":
+               sim_settings.display_scale *= 2
+          elif change == "decrease":
+               sim_settings.display_scale /= 2  
+
+     if mode ==  "target_frames":
+          if change == "increase":
+               sim_settings.target_frames += 10
+          elif change == "decrease":
+               sim_settings.target_frames -= 10
+          
 
 
     

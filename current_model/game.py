@@ -26,10 +26,15 @@ class Game():
         self.ui = UI(self.camera,self.objects)
         self.sim_settings = Sim_settings()
         pr.disable_cursor()
+        
 
     def start_game_loop(self):
+        temp_fps = self.sim_settings.target_frames
 
         while not pr.window_should_close():
+            if self.sim_settings.target_frames != temp_fps:
+                pr.set_target_fps(self.sim_settings.target_frames)
+                temp_fps = self.sim_settings.target_frames
 
             update_event_menu(self.ui)
             update_event_sim_settings(self.sim_settings)
@@ -54,7 +59,7 @@ class Game():
 
             if len(self.objects) > 0:
                 for planet in self.objects:
-                    planet.draw()
+                    planet.draw(self.sim_settings)
                     
 
 
@@ -63,7 +68,7 @@ class Game():
 
             if len(self.objects) > 0:
                 for planet in self.objects:
-                    planet.draw_label(self.camera)
+                    planet.draw_label(self.camera,self.sim_settings)
 
             self.ui.draw_UI(self.sim_settings,self.player)
                 

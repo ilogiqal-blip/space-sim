@@ -2,15 +2,17 @@ import pyray as pr
 
 class Sim_settings():
     def __init__(self):
-        self.time_scale = 10000 # we want it to apply the gravity 20 times so the "frame time "
+        self.time_scale = 1.0 # we want it to apply the gravity 20 times so the "frame time "
         self.substeps = 20  # is now divided by 20 as its 20 times per frame
-        self.display_scale = 1
+        self.display_scale = 1.0
+        self.target_frames = 60
 
         self.mode_value = 0
         self.mode = [
             "time_scale",
             "substeps",
-            "display_scale"
+            "display_scale",
+            "target_frames"
         ]
         
     def get_mode(self):

@@ -21,27 +21,28 @@ class Planet():
 
     
 
-    def draw(self):
-        pr.draw_sphere((self.position.x,
-                        self.position.y,
-                        self.position.z),
+    def draw(self,sim_settings):
 
-                        self.radius,
+        pr.draw_sphere((self.position.x / sim_settings.display_scale,
+                        self.position.y / sim_settings.display_scale,
+                        self.position.z / sim_settings.display_scale),
+
+                        self.radius / sim_settings.display_scale,
                         self.colour)
         
-        pr.draw_sphere_wires((self.position.x,
-                            self.position.y,
-                            self.position.z),
+        pr.draw_sphere_wires((self.position.x / sim_settings.display_scale,
+                            self.position.y / sim_settings.display_scale,
+                            self.position.z / sim_settings.display_scale),
                               
-                            self.radius + 0.002,
+                            (self.radius / sim_settings.display_scale) + 0.002,
                             25,
                             50,
                             pr.Color(55,55,55,55))
         
-    def draw_label(self,camera):
+    def draw_label(self,camera,sim_settings):
         
         screen_pos = pr.get_world_to_screen(self.position,camera)
-        pr.draw_text(str(self.id), int(screen_pos.x), int(screen_pos.y), 40, pr.GREEN)
+        pr.draw_text(str(self.id), int(screen_pos.x) , int(screen_pos.y) , 40, pr.GREEN)
         
     def calc_a(self,other):
 
