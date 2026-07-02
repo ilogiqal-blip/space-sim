@@ -38,6 +38,11 @@ class Planet():
                             50,
                             pr.Color(55,55,55,55))
         
+    def draw_label(self,camera):
+        
+        screen_pos = pr.get_world_to_screen(self.position,camera)
+        pr.draw_text(str(self.id), int(screen_pos.x), int(screen_pos.y), 40, pr.GREEN)
+        
     def calc_a(self,other):
 
         G = 6.674e-29  # Mm^3 * kg^-1 * s^-2

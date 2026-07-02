@@ -58,7 +58,12 @@ class Player():
 
         forward = pr.is_key_down(pr.KEY_W) - pr.is_key_down(pr.KEY_S)
         strafe = pr.is_key_down(pr.KEY_D) - pr.is_key_down(pr.KEY_A)
-        up = pr.is_key_down(pr.KEY_Q) - pr.is_key_down(pr.KEY_E)
+        up = pr.is_key_down(pr.KEY_LEFT_SHIFT) - pr.is_key_down(pr.KEY_LEFT_CONTROL)
+
+        if pr.is_key_pressed(pr.KEY_Q):
+            speed *= 10
+        elif pr.is_key_pressed(pr.KEY_E):
+            speed /= 10
         
 
         movement_x = self.direction.x

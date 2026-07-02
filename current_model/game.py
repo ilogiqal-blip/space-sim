@@ -32,9 +32,10 @@ class Game():
         while not pr.window_should_close():
 
             update_event_menu(self.ui)
-            update_event_timescale(self.sim_settings)
+            update_event_sim_settings(self.sim_settings)
 
-
+            
+            
             if not self.ui.main_menu.state.menu_open and not self.ui.collision_menu.state.menu_open:
                 self.player.update()
                 simulate(self.objects,self.sim_settings)
@@ -54,11 +55,16 @@ class Game():
             if len(self.objects) > 0:
                 for planet in self.objects:
                     planet.draw()
+                    
 
 
        
             pr.end_mode_3d()
 
-            self.ui.draw_UI(self.sim_settings)
+            if len(self.objects) > 0:
+                for planet in self.objects:
+                    planet.draw_label(self.camera)
+
+            self.ui.draw_UI(self.sim_settings,self.player)
                 
             pr.end_drawing()

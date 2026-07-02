@@ -15,11 +15,13 @@ class UI():
         
 
 
-    def draw_UI(self,sim_settings):
+    def draw_UI(self,sim_settings,player):
 
-        pr.draw_text(f"time scale = x{sim_settings.time_scale}", 10, 10, 20, pr.WHITE)
-        pr.draw_text(f"subsets = {sim_settings.substeps}", 10, 40, 20, pr.WHITE)
-        pr.draw_text(f"display scale {sim_settings.display_scale}", 10, 70, 20, pr.WHITE)
+        pr.draw_text(f"time scale = x{sim_settings.time_scale}", 10, 10, 20, sim_settings.Get_colour("time_scale"))
+        pr.draw_text(f"subsets = {sim_settings.substeps}", 10, 40, 20, sim_settings.Get_colour("substeps"))
+        pr.draw_text(f"display scale = x{sim_settings.display_scale}", 10, 70, 20, sim_settings.Get_colour("display_scale"))
+        pr.draw_text(f"player speed x{player.speed}", 10,100 , 20, sim_settings.Get_colour("display_scale"))
+
         if self.main_menu.state.menu_open:
             self.main_menu.draw_menu(self.config_menu)
 
