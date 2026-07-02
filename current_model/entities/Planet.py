@@ -14,6 +14,7 @@ class Planet():
         self.velocity = velocity #Mm/s
         self.acceleration = 0 
         self.id = planet_id
+        
 
 
         
@@ -22,17 +23,28 @@ class Planet():
     
 
     def draw(self,sim_settings):
-
-        pr.draw_sphere((self.position.x / sim_settings.display_scale,
+        scaled_pos = pr.Vector3(
+                        self.position.x / sim_settings.display_scale,
                         self.position.y / sim_settings.display_scale,
-                        self.position.z / sim_settings.display_scale),
+                        self.position.z / sim_settings.display_scale
+                        )
+        
+        pr.draw_sphere(
+                        (
+                            scaled_pos.x,
+                            scaled_pos.y,
+                            scaled_pos.z
+                            ),
 
                         self.radius / sim_settings.display_scale,
                         self.colour)
         
-        pr.draw_sphere_wires((self.position.x / sim_settings.display_scale,
-                            self.position.y / sim_settings.display_scale,
-                            self.position.z / sim_settings.display_scale),
+        pr.draw_sphere_wires(
+                            (
+                                scaled_pos.x,
+                                scaled_pos.y,
+                                scaled_pos.z
+                                ),
                               
                             (self.radius / sim_settings.display_scale) + 0.002,
                             25,
@@ -40,8 +52,13 @@ class Planet():
                             pr.Color(55,55,55,55))
         
     def draw_label(self,camera,sim_settings):
+        scaled_pos = pr.Vector3(
+                        self.position.x / sim_settings.display_scale,
+                        self.position.y / sim_settings.display_scale,
+                        self.position.z / sim_settings.display_scale
+                        )
         
-        screen_pos = pr.get_world_to_screen(self.position,camera)
+        screen_pos = pr.get_world_to_screen(scaled_pos,camera)
         pr.draw_text(str(self.id), int(screen_pos.x) , int(screen_pos.y) , 40, pr.GREEN)
         
     def calc_a(self,other):

@@ -57,8 +57,8 @@ class menu():
             pr.draw_rectangle(70,250,420,150,pr.GRAY)
             pr.draw_text("reset simulation", 90, 280, 40, pr.WHITE)
 
-########################################################################## preset button
-        if self.input.get_option_hovered() == "preset":
+########################################################################## preset button 1
+        if self.input.get_option_hovered() == "preset_1":
 
             pr.draw_rectangle(70,430,420,150,pr.DARKGRAY)
             pr.draw_rectangle_lines(70,430,420,150,pr.GRAY)
@@ -73,6 +73,23 @@ class menu():
         else:
             pr.draw_rectangle(70,430,420,150,pr.GRAY)
             pr.draw_text("preset 1", 90, 450, 40, pr.WHITE)
+
+########################################################################## preset button 2
+        if self.input.get_option_hovered() == "preset_2":
+
+            pr.draw_rectangle(70,610,420,150,pr.DARKGRAY)
+            pr.draw_rectangle_lines(70,610,420,150,pr.GRAY)
+            pr.draw_text("preset 2", 90, 630, 40, pr.WHITE)
+        
+
+            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+
+                preset = self.preset.load("preset_2")
+                self.objects.extend(preset.planets)
+
+        else:
+            pr.draw_rectangle(70,610,420,150,pr.GRAY)
+            pr.draw_text("preset 2", 90, 630, 40, pr.WHITE)
 
 
 
