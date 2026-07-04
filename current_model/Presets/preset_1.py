@@ -12,3 +12,4 @@ class preset_1():
             make_planet(6.371, pr.Vector3(149600,0,0), 0, 0, 5.51, 29.78, pr.BLUE, "earth"),
             make_planet(1.737, pr.Vector3(149984.4,0,0), 0, 0, 3.344, 30.802, pr.GRAY, "moon"),
         ]
+
