@@ -1,23 +1,16 @@
 import pyray as pr
+from integrators.eular import *
+from integrators.RK4 import *
+from integrators.velocity_verlet import *
 
 
 def simulate(objects,sim_settings):
-    dt = (pr.get_frame_time() * sim_settings.time_scale / sim_settings.substeps) 
 
-    
-    for i in range(sim_settings.substeps):
-        for planet in objects:
+    integrator = sim_settings.get_integrator()
 
-            for other_planet in objects:
-                        
-                if planet.id != other_planet.id:
-
-                        planet.apply_a(other_planet,dt)
-                                            
-                else:
-                    continue
-
-
-                
-        for planet in objects:
-            planet.update(dt)
+    if integrator == "eular":
+        eular_integrate(objects,sim_settings)
+    elif integrator == "RK4":
+        RK4_integrate()
+    elif integrator =="velocity verlet":
+        velocity_verlet_integrate()

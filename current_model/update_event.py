@@ -61,6 +61,12 @@ def update_event_sim_settings(sim_settings):
                sim_settings.target_frames += 10
           elif change == "decrease":
                sim_settings.target_frames -= 10
+
+     if mode == "integrator":
+          if change == "increase" and sim_settings.integrator_value < 2:
+               sim_settings.integrator_value += 1
+          elif change == "decrease" and sim_settings.integrator_value > 0:
+               sim_settings.integrator_value -= 1
           
 
 

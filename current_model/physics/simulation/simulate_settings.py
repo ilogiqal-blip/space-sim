@@ -12,7 +12,15 @@ class Sim_settings():
             "time_scale",
             "substeps",
             "display_scale",
-            "target_frames"
+            "target_frames",
+            "integrator"
+        ]
+
+        self.integrator_value = 0
+        self.integrator = [
+            "eular",
+            "RK4",
+            "velocity verlet"
         ]
         
     def get_mode(self):
@@ -23,3 +31,7 @@ class Sim_settings():
             return pr.GREEN
         else:
             return pr.WHITE
+        
+    def get_integrator(self):
+        return self.integrator[self.integrator_value]
+

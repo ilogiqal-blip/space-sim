@@ -25,6 +25,7 @@ class UI():
         pr.draw_text(f"display scale = x{sim_settings.display_scale}", 10, 70, 20, sim_settings.Get_colour("display_scale"))
         pr.draw_text(f"target frames = {sim_settings.target_frames}", 10, 100 , 20, sim_settings.Get_colour("target_frames"))
         pr.draw_text(f"player speed x{player.speed}", 10, 130 , 20, sim_settings.Get_colour("player speed"))
+        pr.draw_text(f"integrator = {sim_settings.get_integrator()}", 10, 160 , 20 ,sim_settings.Get_colour("integrator"))
 
         if self.main_menu.state.menu_open:
             self.main_menu.draw_menu(self.config_menu)

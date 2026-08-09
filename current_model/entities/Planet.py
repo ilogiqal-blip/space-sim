@@ -79,28 +79,4 @@ class Planet():
 
         return acceleration,target,r
 
-
-
-    def apply_a(self,other,dt):
-        acceleration,target,r = self.calc_a(other)
-
-        if r == None:
-            return
-
-        acceleration_v = pr.Vector3(
-                                            acceleration * target.x / r,
-                                            acceleration * target.y / r,
-                                            acceleration * target.z / r
-                                            )
-
-        self.velocity.x += acceleration_v.x * dt 
-        self.velocity.y += acceleration_v.y * dt 
-        self.velocity.z += acceleration_v.z * dt 
-
-
-    def update(self,dt):
-        self.position.x += self.velocity.x * dt
-        self.position.y += self.velocity.y * dt
-        self.position.z += self.velocity.z * dt
-
         
