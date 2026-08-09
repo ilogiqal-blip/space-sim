@@ -23,8 +23,8 @@ class Game():
         
         self.objects = []
         self.player = Player(500)
-        self.ui = UI(self.camera,self.objects)
         self.sim_settings = Sim_settings()
+        self.ui = UI(self.camera,self.objects,self.sim_settings)
         pr.disable_cursor()
         
 
@@ -37,13 +37,18 @@ class Game():
                 temp_fps = self.sim_settings.target_frames
 
             update_event_menu(self.ui)
-            update_event_sim_settings(self.sim_settings)
 
             
             
             if not self.ui.main_menu.state.menu_open and not self.ui.collision_menu.state.menu_open:
+
+                update_event_sim_settings(self.sim_settings,self.objects)
+
                 self.player.update()
-                simulate(self.objects,self.sim_settings)
+
+                if self.sim_settings.simulation_start:
+                    simulate(self.objects,self.sim_settings)
+
                 #update_event_collision(self.ui,self.objects)
                 self.player.camera_update(self.camera)
             

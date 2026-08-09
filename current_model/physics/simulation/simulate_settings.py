@@ -6,6 +6,8 @@ class Sim_settings():
         self.substeps = 20  # is now divided by 20 as its 20 times per frame
         self.display_scale = 1.0
         self.target_frames = 60
+        self.simulation_start = False
+        self.initial_total_system_energy = 0
 
         self.mode_value = 0
         self.mode = [
@@ -13,7 +15,8 @@ class Sim_settings():
             "substeps",
             "display_scale",
             "target_frames",
-            "integrator"
+            "integrator",
+            "sim start"
         ]
 
         self.integrator_value = 0

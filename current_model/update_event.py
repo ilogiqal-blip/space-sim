@@ -1,5 +1,6 @@
 import pyray as pr
 from physics.collisions import *
+from physics.total_energy import *
 
 
 def update_event_menu(ui):
@@ -21,7 +22,7 @@ def update_event_collision(ui,objects):
         if not ui.collision_menu.state.menu_open:
             ui.collision_menu.state.toggle_state()
 
-def update_event_sim_settings(sim_settings):
+def update_event_sim_settings(sim_settings,objects):
      change = None
      mode = sim_settings.get_mode()
 
@@ -67,6 +68,11 @@ def update_event_sim_settings(sim_settings):
                sim_settings.integrator_value += 1
           elif change == "decrease" and sim_settings.integrator_value > 0:
                sim_settings.integrator_value -= 1
+
+     if pr.is_key_pressed(pr.KEY_SPACE) and (sim_settings.simulation_start == False):
+          sim_settings.simulation_start = True
+          sim_settings.initial_total_system_energy = calc_total_energy(objects)
+          print(sim_settings.initial_total_system_energy)
           
 
 

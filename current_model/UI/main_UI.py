@@ -6,11 +6,11 @@ from .menu.collisions_menu.collision_menu import *
 
 class UI():
     
-    def __init__(self,camera,objects):
+    def __init__(self,camera,objects,sim_settings):
         
         self.main_menu = menu(objects)
         self.collision_menu = collision_menu()
-        self.config_menu = config_menu(objects,self.collision_menu)
+        self.config_menu = config_menu(objects,self.collision_menu,sim_settings)
         self.camera = camera
         
 
@@ -26,6 +26,7 @@ class UI():
         pr.draw_text(f"target frames = {sim_settings.target_frames}", 10, 100 , 20, sim_settings.Get_colour("target_frames"))
         pr.draw_text(f"player speed x{player.speed}", 10, 130 , 20, sim_settings.Get_colour("player speed"))
         pr.draw_text(f"integrator = {sim_settings.get_integrator()}", 10, 160 , 20 ,sim_settings.Get_colour("integrator"))
+        pr.draw_text(f"sim start = {sim_settings.simulation_start}", 10, 190 , 20 ,sim_settings.Get_colour("sim_start"))
 
         if self.main_menu.state.menu_open:
             self.main_menu.draw_menu(self.config_menu)

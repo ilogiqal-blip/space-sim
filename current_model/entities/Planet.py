@@ -14,11 +14,9 @@ class Planet():
         self.velocity = velocity #Mm/s
         self.acceleration = 0 
         self.id = planet_id
+        self.total_initial_energy = 0
         
 
-
-        
-        
 
     
 
@@ -70,7 +68,7 @@ class Planet():
                                     other.position.z - self.position.z 
                                     )
             
-        r = math.sqrt(target.x**2 + target.y**2 + target.z**2) #km
+        r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
 
         if r <= 0:
             return None, None, None
