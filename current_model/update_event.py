@@ -69,10 +69,15 @@ def update_event_sim_settings(sim_settings,objects):
           elif change == "decrease" and sim_settings.integrator_value > 0:
                sim_settings.integrator_value -= 1
 
-     if pr.is_key_pressed(pr.KEY_SPACE) and (sim_settings.simulation_start == False):
-          sim_settings.simulation_start = True
-          sim_settings.initial_total_system_energy = calc_total_energy(objects)
-          print(sim_settings.initial_total_system_energy)
+     if mode == "sim start":
+          if change == "increase" and sim_settings.sim_start == False:
+               sim_settings.sim_start = True
+               energy = calc_total_energy(objects)
+               sim_settings.initial_total_system_energy = energy
+               sim_settings.current_total_system_energy = energy
+
+               print(sim_settings.initial_total_system_energy,sim_settings.current_total_system_energy)
+          
           
 
 

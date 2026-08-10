@@ -25,16 +25,18 @@ class Game():
         self.player = Player(500)
         self.sim_settings = Sim_settings()
         self.ui = UI(self.camera,self.objects,self.sim_settings)
+        self.temp_fps = 0
         pr.disable_cursor()
         
 
     def start_game_loop(self):
-        temp_fps = self.sim_settings.target_frames
+        
 
         while not pr.window_should_close():
-            if self.sim_settings.target_frames != temp_fps:
+            
+            if self.sim_settings.target_frames != self.temp_fps:
                 pr.set_target_fps(self.sim_settings.target_frames)
-                temp_fps = self.sim_settings.target_frames
+                self.temp_fps = self.sim_settings.target_frames
 
             update_event_menu(self.ui)
 
@@ -46,8 +48,28 @@ class Game():
 
                 self.player.update()
 
-                if self.sim_settings.simulation_start:
+                if self.sim_settings.sim_start:
+
                     simulate(self.objects,self.sim_settings)
+                    percentage_loss = 0
+                    difference = 0
+                    dt = pr.get_frame_time() 
+                    self.sim_settings.elapsed_time += (dt * self.sim_settings.time_scale)
+
+                    self.sim_settings.current_total_system_energy = calc_total_energy(self.objects)
+
+                    difference = self.sim_settings.initial_total_system_energy - self.sim_settings.current_total_system_energy
+                    
+
+                    if self.sim_settings.initial_total_system_energy == 0:
+                        percentage_loss = 0
+                    else:
+                        percentage_loss = (difference/self.sim_settings.initial_total_system_energy) * 100
+
+                    print(f"difference = {difference}")
+                    print(f"elapsed time = {self.sim_settings.elapsed_time}")
+                    print(f"% loss = {percentage_loss}")
+                    
 
                 #update_event_collision(self.ui,self.objects)
                 self.player.camera_update(self.camera)

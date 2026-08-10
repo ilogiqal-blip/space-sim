@@ -8,7 +8,7 @@ from game import *
 def main():
 
     pr.set_config_flags(pr.FLAG_WINDOW_RESIZABLE)
-    pr.init_window(1600,900,"Space sim engine")
+    pr.init_window(1200,600,"Space sim engine")
     pr.rl_set_line_width(3)
 
     

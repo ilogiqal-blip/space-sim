@@ -99,6 +99,6 @@ class config_menu():
         self.planet_id = 0
         self.input = get_config_menu_option()
         self.collision_menu.state.menu_open = False
-        self.sim_settings.simulation_start = False
+        self.sim_settings.sim_start = False
         
         
