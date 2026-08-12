@@ -23,7 +23,6 @@ class config_menu():
         self.objects = objects
         self.state = menu_state()
         self.collision_menu = collision_menu
-        self.sim_settings = sim_settings
     
     def draw(self,camera):
 
@@ -99,6 +98,5 @@ class config_menu():
         self.planet_id = 0
         self.input = get_config_menu_option()
         self.collision_menu.state.menu_open = False
-        self.sim_settings.sim_start = False
         
         

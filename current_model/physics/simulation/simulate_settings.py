@@ -1,4 +1,5 @@
 import pyray as pr
+from data.gathered_data import *
 
 class Sim_settings():
     def __init__(self):
@@ -6,10 +7,14 @@ class Sim_settings():
         self.substeps = 20  # is now divided by 20 as its 20 times per frame
         self.display_scale = 1.0
         self.target_frames = 60
-        self.sim_start = False
+        self.start = False
+        self.test_start = False
         self.initial_total_system_energy = 0
         self.current_total_system_energy = 0
         self.elapsed_time = 0
+        self.gathered_data = gathered_data(f"%loss")
+        self.show_data = False
+        self.simulation_duration = 2
 
         self.mode_value = 0
         self.mode = [
@@ -18,7 +23,8 @@ class Sim_settings():
             "display_scale",
             "target_frames",
             "integrator",
-            "sim start"
+            "start",
+            "test start"
         ]
 
         self.integrator_value = 0

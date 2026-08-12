@@ -9,6 +9,10 @@ from physics.collisions import *
 from UI.main_UI import *
 from update_event import *
 from physics.simulation.simulate_settings import *
+from data.gathered_data import *
+from data.calculate_percentage_loss import *
+from data.data_display import *
+
 
 class Game():
 
@@ -28,8 +32,9 @@ class Game():
         self.temp_fps = 0
         pr.disable_cursor()
         
+        
 
-    def start_game_loop(self):
+    def start_game_loop(self,graph_texture):
         
 
         while not pr.window_should_close():
@@ -44,31 +49,24 @@ class Game():
             
             if not self.ui.main_menu.state.menu_open and not self.ui.collision_menu.state.menu_open:
 
-                update_event_sim_settings(self.sim_settings,self.objects)
+                update_event_sim_settings(self.sim_settings,self.objects,graph_texture)
 
                 self.player.update()
 
-                if self.sim_settings.sim_start:
+
+
+                if self.sim_settings.start:
 
                     simulate(self.objects,self.sim_settings)
-                    percentage_loss = 0
-                    difference = 0
-                    dt = pr.get_frame_time() 
-                    self.sim_settings.elapsed_time += (dt * self.sim_settings.time_scale)
 
-                    self.sim_settings.current_total_system_energy = calc_total_energy(self.objects)
+                    if self.sim_settings.test_start:
 
-                    difference = self.sim_settings.initial_total_system_energy - self.sim_settings.current_total_system_energy
+                        percentage_loss = calc_percentage_loss(self.objects,self.sim_settings)
+
+                        self.sim_settings.gathered_data.add_data(f"%loss",percentage_loss,self.sim_settings.elapsed_time)
+
                     
-
-                    if self.sim_settings.initial_total_system_energy == 0:
-                        percentage_loss = 0
-                    else:
-                        percentage_loss = (difference/self.sim_settings.initial_total_system_energy) * 100
-
-                    print(f"difference = {difference}")
-                    print(f"elapsed time = {self.sim_settings.elapsed_time}")
-                    print(f"% loss = {percentage_loss}")
+                    
                     
 
                 #update_event_collision(self.ui,self.objects)
@@ -98,5 +96,14 @@ class Game():
                     planet.draw_label(self.camera,self.sim_settings)
 
             self.ui.draw_UI(self.sim_settings,self.player)
+
+            if self.sim_settings.show_data:
+                pr.draw_texture_rec(
+                    graph_texture.texture,
+                    pr.Rectangle(0, 0, 800, -600),
+                    pr.Vector2(400, 20),
+                    pr.LIGHTGRAY
+                )
+                                
                 
             pr.end_drawing()

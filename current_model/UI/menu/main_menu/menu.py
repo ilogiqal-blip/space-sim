@@ -22,8 +22,8 @@ class menu():
 
     def draw_menu(self,config_menu):
     
-        pr.draw_rectangle(50,50,460,700,pr.Color(50,50,50,125))
-        pr.draw_rectangle_lines(50,50,460,700,pr.DARKGRAY)
+        pr.draw_rectangle(50,50,460,800,pr.Color(50,50,50,125))
+        pr.draw_rectangle_lines(50,50,460,800,pr.DARKGRAY)
  
         
 
