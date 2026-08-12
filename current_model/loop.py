@@ -100,8 +100,8 @@ class Game():
             if self.sim_settings.show_data:
                 pr.draw_texture_rec(
                     graph_texture.texture,
-                    pr.Rectangle(0, 0, 800, -600),
-                    pr.Vector2(400, 20),
+                    pr.Rectangle(0, 0, 1200, -800),
+                    pr.Vector2(200, 20),
                     pr.LIGHTGRAY
                 )
                                 
