@@ -14,7 +14,7 @@ class Sim_settings():
         self.elapsed_time = 0
         self.gathered_data = gathered_data(f"%loss")
         self.show_data = False
-        self.simulation_duration = 60
+        self.simulation_duration = 20
 
         self.mode_value = 0
         self.mode = [

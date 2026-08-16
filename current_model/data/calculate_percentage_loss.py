@@ -10,7 +10,7 @@ def calc_percentage_loss(objects,sim_settings):
     
                         sim_settings.current_total_system_energy = calc_total_energy(objects)
     
-                        difference = sim_settings.initial_total_system_energy - sim_settings.current_total_system_energy
+                        difference = sim_settings.current_total_system_energy - sim_settings.initial_total_system_energy
                         
     
                         if sim_settings.initial_total_system_energy == 0:

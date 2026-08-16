@@ -112,7 +112,7 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
           sim_settings.current_total_system_energy = 0
 
 
-          draw_graph(f"elapsed time",f"% \nloss",sim_settings.gathered_data,graph_texture)
+          draw_graph(f"elapsed time",f"energy loss",sim_settings.gathered_data,graph_texture)
           #for i in range(len(sim_settings.gathered_data.data)):
           #        print(sim_settings.gathered_data.data[i])
 
