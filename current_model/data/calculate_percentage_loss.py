@@ -14,12 +14,12 @@ def calc_percentage_loss(objects,sim_settings):
                         
     
                         if sim_settings.initial_total_system_energy == 0:
-                            percentage_loss = 0
+                            percentage_difference = 0
                         else:
-                            percentage_loss = (difference/sim_settings.initial_total_system_energy) * 100
+                            percentage_difference = (difference/sim_settings.initial_total_system_energy) * 100
     
                         #print(f"difference = {difference}")
                         #print(f"elapsed time = {sim_settings.elapsed_time}")
                         #print(f"% loss = {percentage_loss}")
 
-                        return percentage_loss 
+                        return percentage_difference 

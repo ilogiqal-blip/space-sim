@@ -1,0 +1,121 @@
+import pyray as pr
+from entities.Planet import *
+
+def RK4_integrate(objects,sim_settings):
+
+    for planet in objects:
+
+        planet.current_RK4_step = pr.Vector3(
+            0,
+            0,
+            0
+        )
+
+        planet.RK4_temp_planet_pos = pr.Vector3(
+            0,
+            0,
+            0
+        )
+
+    dt = (pr.get_frame_time() * sim_settings.time_scale / sim_settings.substeps)
+
+
+    for i in range(sim_settings.substeps):
+
+        for planet in objects: 
+
+            v1 = pr.Vector3(
+                planet.velocity.x,
+                planet.velocity.y,
+                planet.velocity.z
+            )
+
+            planet.current_RK4_step_v.x = v1.x
+            planet.current_RK4_step_v.y = v1.y
+            planet.current_RK4_step_v.z = v1.z
+
+            planet.RK4_temp_planet_pos.x = planet.position.x + (v1.x * dt / 2) # half way position 
+            planet.RK4_temp_planet_pos.y = planet.position.y + (v1.y * dt / 2)
+            planet.RK4_temp_planet_pos.z = planet.position.z + (v1.z * dt / 2)
+
+            
+
+
+
+        for planet in objects:
+
+
+            acceleration = calc_total_a_from_temp(planet,objects)
+
+            
+            planet.RK4_temp_planet_velocity.x = planet.velocity.x + acceleration.x * dt / 2
+            planet.RK4_temp_planet_velocity.y = planet.velocity.y + acceleration.y * dt / 2 # half way velocity
+            planet.RK4_temp_planet_velocity.z = planet.velocity.z + acceleration.z * dt / 2
+
+            v2 = pr.Vector3(
+                planet.RK4_temp_planet_velocity.x,
+                planet.RK4_temp_planet_velocity.y,
+                planet.RK4_temp_planet_velocity.z
+            )
+
+            planet.current_RK4_step_v.x += v2.x + v2.x
+            planet.current_RK4_step_v.y += v2.y + v2.y
+            planet.current_RK4_step_v.z += v2.z + v2.z
+
+            planet.RK4_temp_planet_pos.x = planet.position.x + (v2.x * dt / 2)
+            planet.RK4_temp_planet_pos.y = planet.position.y + (v2.y * dt / 2)
+            planet.RK4_temp_planet_pos.z = planet.position.z + (v2.z * dt / 2)
+
+            
+
+        for planet in objects:
+
+            acceleration = calc_total_a_from_temp(planet,objects)
+            
+            planet.RK4_temp_planet_velocity.x += acceleration.x * dt
+            planet.RK4_temp_planet_velocity.y += acceleration.y * dt
+            planet.RK4_temp_planet_velocity.z += acceleration.z * dt
+
+            f3 = pr.Vector3(
+                planet.RK4_temp_planet_velocity.x,
+                planet.RK4_temp_planet_velocity.y,
+                planet.RK4_temp_planet_velocity.z
+            )
+
+            planet.current_RK4_step_v.x += f3.x + f3.x
+            planet.current_RK4_step_v.y += f3.y + f3.y
+            planet.current_RK4_step_v.z += f3.z + f3.z
+
+            planet.RK4_temp_planet_pos.x = planet.position.x + (f3.x * dt) 
+            planet.RK4_temp_planet_pos.y = planet.position.y + (f3.y * dt) 
+            planet.RK4_temp_planet_pos.z = planet.position.z + (f3.z * dt) 
+
+        for planet in objects:
+
+            acceleration = calc_total_a_from_temp(planet,objects)
+                        
+            planet.RK4_temp_planet_velocity.x += acceleration.x * dt
+            planet.RK4_temp_planet_velocity.y += acceleration.y * dt
+            planet.RK4_temp_planet_velocity.z += acceleration.z * dt
+
+            f4 = pr.Vector3(
+                planet.RK4_temp_planet_velocity.x,
+                planet.RK4_temp_planet_velocity.y,
+                planet.RK4_temp_planet_velocity.z
+            )
+
+            planet.current_RK4_step_v.x += f4.x
+            planet.current_RK4_step_v.y += f4.y
+            planet.current_RK4_step_v.z += f4.z
+
+
+
+        for planet in objects:  
+
+            planet.velocity.x = planet.current_RK4_step_v.x / 6
+            planet.velocity.y = planet.current_RK4_step_v.y / 6
+            planet.velocity.z = planet.current_RK4_step_v.z / 6
+
+            planet.position.x += planet.velocity.x * dt 
+            planet.position.y += planet.velocity.y * dt
+            planet.position.z += planet.velocity.z * dt

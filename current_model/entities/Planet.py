@@ -15,7 +15,21 @@ class Planet():
         self.acceleration = 0 
         self.id = planet_id
         self.total_initial_energy = 0
+
         
+        self.temp_planet_pos = pr.Vector3(0,0,0)
+        self.temp_planet_velocity = pr.Vector3(0,0,0)
+            
+        self.k1_v = pr.Vector3(0,0,0)             
+        self.k2_v = pr.Vector3(0,0,0)             
+        self.k3_v = pr.Vector3(0,0,0)            
+        self.k4_v = pr.Vector3(0,0,0)
+                     
+        self.k1_a = pr.Vector3(0,0,0)             
+        self.k2_a = pr.Vector3(0,0,0)             
+        self.k3_a = pr.Vector3(0,0,0)             
+        self.k4_a = pr.Vector3(0,0,0)
+                     
 
 
     
@@ -76,5 +90,23 @@ class Planet():
         acceleration = (G*other.mass)/(r**2)
 
         return acceleration,target,r
+
+    def calc_a_temp_pos(self,other):
+    
+            G = 6.674e-29  # Mm^3 * kg^-1 * s^-2
+            target = pr.Vector3(
+                                        other.temp_planet_pos.x - self.temp_planet_pos.x,
+                                        other.temp_planet_pos.y - self.temp_planet_pos.y,
+                                        other.temp_planet_pos.z - self.temp_planet_pos.z 
+                                        )
+                
+            r = math.sqrt(target.x**2 + target.y**2 + target.z**2)
+    
+            if r <= 0:
+                return None, None, None
+            
+            acceleration = (G*other.mass)/(r**2)
+    
+            return acceleration,target,r
 
         

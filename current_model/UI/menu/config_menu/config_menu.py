@@ -8,7 +8,7 @@ from ..state import *
 
 class config_menu():
 
-    def __init__(self,objects,collision_menu,sim_settings):
+    def __init__(self,objects,collision_menu):
         self.radius_Mm = 6
         self.density_g_cm3 = 5
         self.position_x = 0
@@ -87,7 +87,7 @@ class config_menu():
         
         return self.radius_Mm, pr.Vector3(self.position_x,self.position_y,self.position_z), pr.WHITE, mass, velocity, self.planet_id
      
-    def config_reset(self):
+    def config_reset(self,sim_settings):
         self.radius_Mm = 6
         self.density_g_cm3 = 5
         self.position_x = 0

@@ -10,9 +10,12 @@ def simulate(objects,sim_settings):
 
     if integrator == "eular":
         eular_integrate(objects,sim_settings)
+        print("eular")
 
     elif integrator == "RK4":
-        RK4_integrate()
+        RK4_integrate(objects,sim_settings)
+        print("rk4")
         
     elif integrator =="velocity verlet":
-        velocity_verlet_integrate()
+        velocity_verlet_integrate(objects,sim_settings)
+        print("velocity verlet")

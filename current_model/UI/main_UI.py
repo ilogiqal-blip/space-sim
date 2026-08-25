@@ -6,11 +6,11 @@ from .menu.collisions_menu.collision_menu import *
 
 class UI():
     
-    def __init__(self,camera,objects,sim_settings):
+    def __init__(self,camera,objects):
         
         self.main_menu = menu(objects)
         self.collision_menu = collision_menu()
-        self.config_menu = config_menu(objects,self.collision_menu,sim_settings)
+        self.config_menu = config_menu(objects,self.collision_menu)
         
         self.camera = camera
         
@@ -31,7 +31,7 @@ class UI():
         pr.draw_text(f"test start = {sim_settings.test_start}", 10, 220 , 20 ,sim_settings.Get_colour("test start"))
 
         if self.main_menu.state.menu_open:
-            self.main_menu.draw_menu(self.config_menu)
+            self.main_menu.draw_menu(self.config_menu,sim_settings)
 
         if self.config_menu.state.menu_open:
             pr.draw_rectangle(1160,70,420,600,pr.Color(50,50,50,200))    
@@ -44,4 +44,4 @@ class UI():
             pr.draw_text("create new planet", 90, 100, 40, pr.WHITE)
         
         if self.collision_menu.state.menu_open:
-            self.collision_menu.draw_menu()
+            self.collision_menu.draw_menu(sim_settings)

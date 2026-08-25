@@ -20,7 +20,7 @@ class menu():
     
      
 
-    def draw_menu(self,config_menu):
+    def draw_menu(self,config_menu,sim_settings):
     
         pr.draw_rectangle(50,50,460,800,pr.Color(50,50,50,125))
         pr.draw_rectangle_lines(50,50,460,800,pr.DARKGRAY)
@@ -51,7 +51,7 @@ class menu():
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
 
                 self.objects.clear()
-                config_menu.config_reset()
+                config_menu.config_reset(sim_settings)
 
         else:
             pr.draw_rectangle(70,250,420,150,pr.GRAY)

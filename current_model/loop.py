@@ -28,7 +28,7 @@ class Game():
         self.objects = []
         self.player = Player(500)
         self.sim_settings = Sim_settings()
-        self.ui = UI(self.camera,self.objects,self.sim_settings)
+        self.ui = UI(self.camera,self.objects)
         self.temp_fps = 0
         pr.disable_cursor()
         

@@ -88,7 +88,7 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
                sim_settings.initial_total_system_energy = energy
                sim_settings.current_total_system_energy = energy
                
-               print(sim_settings.initial_total_system_energy,sim_settings.current_total_system_energy)
+               #print(sim_settings.initial_total_system_energy,sim_settings.current_total_system_energy)
           
      if pr.is_key_pressed(pr.KEY_I):
           
@@ -112,7 +112,7 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
           sim_settings.current_total_system_energy = 0
 
 
-          draw_graph(f"elapsed time",f"energy loss",sim_settings.gathered_data,graph_texture)
+          draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture)
           #for i in range(len(sim_settings.gathered_data.data)):
           #        print(sim_settings.gathered_data.data[i])
 
