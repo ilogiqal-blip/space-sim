@@ -1,5 +1,6 @@
 import pyray as pr 
 import math
+from vector.vector import *
 
 
 Player_version = "0.0.8"
@@ -7,7 +8,7 @@ Player_version = "0.0.8"
 class Player():
 
     def __init__(self,speed):
-        self.pos = pr.Vector3(
+        self.pos = Vector3(
                             0,
                             300,
                             300
@@ -15,7 +16,7 @@ class Player():
         self.TotalChangeX = 0
         self.TotalChangeY = 0
         self.sensitiviy  = 0.002
-        self.direction = pr.Vector3(1,0,1)
+        self.direction = Vector3(1,0,1)
         self.speed = speed
         self.version = Player_version
         print(f"sensitivity set to:{self.sensitiviy}")
@@ -48,7 +49,7 @@ class Player():
         direction_z = - math.cos(self.TotalChangeY) * math.cos(self.TotalChangeX)
         #print(f"direction z: {self.direction.z:25}     position z: {self.pos.z}")
 
-        self.direction = pr.Vector3(
+        self.direction = Vector3(
             direction_x,
             direction_y,
             direction_z

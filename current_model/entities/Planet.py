@@ -1,5 +1,6 @@
 import pyray as pr 
 import math
+from vector.vector import *
 
 
 
@@ -17,25 +18,25 @@ class Planet():
         self.total_initial_energy = 0
 
         
-        self.temp_planet_pos = pr.Vector3(0,0,0)
-        self.temp_planet_velocity = pr.Vector3(0,0,0)
+        self.temp_planet_pos = Vector3(0,0,0)
+        self.temp_planet_velocity = Vector3(0,0,0)
             
-        self.k1_v = pr.Vector3(0,0,0)             
-        self.k2_v = pr.Vector3(0,0,0)             
-        self.k3_v = pr.Vector3(0,0,0)            
-        self.k4_v = pr.Vector3(0,0,0)
+        self.k1_v = Vector3(0,0,0)             
+        self.k2_v = Vector3(0,0,0)             
+        self.k3_v = Vector3(0,0,0)            
+        self.k4_v = Vector3(0,0,0)
                      
-        self.k1_a = pr.Vector3(0,0,0)             
-        self.k2_a = pr.Vector3(0,0,0)             
-        self.k3_a = pr.Vector3(0,0,0)             
-        self.k4_a = pr.Vector3(0,0,0)
+        self.k1_a = Vector3(0,0,0)             
+        self.k2_a = Vector3(0,0,0)             
+        self.k3_a = Vector3(0,0,0)             
+        self.k4_a = Vector3(0,0,0)
                      
 
 
     
 
     def draw(self,sim_settings):
-        scaled_pos = pr.Vector3(
+        scaled_pos = Vector3(
                         self.position.x / sim_settings.display_scale,
                         self.position.y / sim_settings.display_scale,
                         self.position.z / sim_settings.display_scale
@@ -76,7 +77,7 @@ class Planet():
     def calc_a(self,other):
 
         G = 6.674e-29  # Mm^3 * kg^-1 * s^-2
-        target = pr.Vector3(
+        target = Vector3(
                                     other.position.x - self.position.x,
                                     other.position.y - self.position.y,
                                     other.position.z - self.position.z 
@@ -94,7 +95,7 @@ class Planet():
     def calc_a_temp_pos(self,other):
     
             G = 6.674e-29  # Mm^3 * kg^-1 * s^-2
-            target = pr.Vector3(
+            target = Vector3(
                                         other.temp_planet_pos.x - self.temp_planet_pos.x,
                                         other.temp_planet_pos.y - self.temp_planet_pos.y,
                                         other.temp_planet_pos.z - self.temp_planet_pos.z 

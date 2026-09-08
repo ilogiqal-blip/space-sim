@@ -1,4 +1,5 @@
 import pyray as pr
+from vector.vector import *
 #from entities.Planet import *
 
 
@@ -11,7 +12,7 @@ def apply_a(planet,other,dt):
     if r == None:
             return
 
-    acceleration_v = pr.Vector3(
+    acceleration_v = Vector3(
                                             acceleration * target.x / r,
                                             acceleration * target.y / r,
                                             acceleration * target.z / r
@@ -27,13 +28,15 @@ def update(planet,dt):
         planet.position.y += planet.velocity.y * dt
         planet.position.z += planet.velocity.z * dt
 
-def eular_integrate(objects,sim_settings):
+def euler_integrate(objects,sim_settings):
+
+        
         dt = (pr.get_frame_time() * sim_settings.time_scale / sim_settings.substeps) 
         
             
         for i in range(sim_settings.substeps):  #iterate for the amount of substeps per frame
             for planet in objects:              #this for loop updates every planets acceleration
-        
+                              
                 for other_planet in objects:
                                 
                     if planet.id != other_planet.id: # checks that the planet its applying gravity to is not itself

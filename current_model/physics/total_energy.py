@@ -1,5 +1,6 @@
 import pyray as pr
 import math
+from vector.vector import *
 
 def calc_total_energy(objects):
     G = 6.674e-29  # Mm^3 * kg^-1 * s^-2
@@ -22,7 +23,7 @@ def calc_total_energy(objects):
                 
 
                 
-            target = pr.Vector3(
+            target = Vector3(
                                                     other.position.x - planet.position.x,
                                                     other.position.y - planet.position.y,
                                                     other.position.z - planet.position.z 

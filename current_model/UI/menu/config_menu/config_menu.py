@@ -3,6 +3,7 @@ import math
 from entities.Planet import *
 from .input import *
 from ..state import *
+from vector.vector import *
 
 
 
@@ -79,13 +80,13 @@ class config_menu():
         direction_y = math.sin(pitch)
         direction_z = - math.cos(pitch) * math.cos(yaw)
 
-        velocity = pr.Vector3(
+        velocity = Vector3(
                         direction_x * speed,
                         direction_y * speed,
                         direction_z * speed
                     )
         
-        return self.radius_Mm, pr.Vector3(self.position_x,self.position_y,self.position_z), pr.WHITE, mass, velocity, self.planet_id
+        return self.radius_Mm, Vector3(self.position_x,self.position_y,self.position_z), pr.WHITE, mass, velocity, self.planet_id
      
     def config_reset(self,sim_settings):
         self.radius_Mm = 6

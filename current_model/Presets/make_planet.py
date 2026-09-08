@@ -1,6 +1,7 @@
 import pyray as pr
 import math
 from entities.Planet import Planet
+from vector.vector import *
 
 def make_planet(radius, position, yaw_deg, pitch_deg, density, speed, colour, planet_id):
         
@@ -17,7 +18,7 @@ def make_planet(radius, position, yaw_deg, pitch_deg, density, speed, colour, pl
         direction_y = math.sin(pitch)
         direction_z = -math.cos(pitch) * math.cos(yaw)
 
-        velocity = pr.Vector3(
+        velocity = Vector3(
             direction_x * s,
             direction_y * s,
             direction_z * s

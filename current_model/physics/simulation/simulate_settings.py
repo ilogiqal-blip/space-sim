@@ -14,7 +14,7 @@ class Sim_settings():
         self.elapsed_time = 0
         self.gathered_data = gathered_data(f"%loss")
         self.show_data = False
-        self.simulation_duration = 10
+        self.simulation_duration = 300
         
 
         self.mode_value = 0
@@ -30,7 +30,7 @@ class Sim_settings():
 
         self.integrator_value = 0
         self.integrator = [
-            "eular",
+            "euler",
             "RK4",
             "velocity verlet"
         ]
@@ -45,6 +45,5 @@ class Sim_settings():
             return pr.WHITE
         
     def get_integrator(self):
-        print(f"self.integrator = {self.integrator_value}")
         return self.integrator[self.integrator_value]
 

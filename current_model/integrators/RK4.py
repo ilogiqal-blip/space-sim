@@ -1,7 +1,9 @@
 import pyray as pr
 from entities.Planet import *
+from vector.vector import *
 
 def RK4_integrate(objects,sim_settings):
+    
 
     dt = (pr.get_frame_time() * sim_settings.time_scale / sim_settings.substeps)
 
@@ -81,11 +83,13 @@ def RK4_integrate(objects,sim_settings):
 
 
 
+
+
     
 def calc_total_a(planet,objects,type):
         
 
-        acceleration_v = pr.Vector3(0, 0, 0)
+        acceleration_v = Vector3(0, 0, 0)
 
         for other in objects:
 
