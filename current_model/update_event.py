@@ -83,13 +83,39 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
                sim_settings.test_start = True
                sim_settings.start = True
                sim_settings.show_data = False
-               sim_settings.gathered_data.data = []
+               
 
                energy = calc_total_energy(objects)
-               sim_settings.initial_total_system_energy = energy
+
+               if sim_settings.elapsed_time == 0:
+                    sim_settings.initial_total_system_energy = energy
+
                sim_settings.current_total_system_energy = energy
                
                #print(sim_settings.initial_total_system_energy,sim_settings.current_total_system_energy)
+
+          if not sim_settings.test_start and pr.is_key_pressed(pr.KEY_BACKSPACE):
+
+               sim_settings.test_start = False
+               sim_settings.start = False
+               sim_settings.elapsed_time = 0
+               sim_settings.show_data = False
+               sim_settings.initial_total_system_energy = 0
+               sim_settings.current_total_system_energy = 0
+               sim_settings.gathered_data.data = []
+     
+
+          elif change == "decrease":
+               sim_settings.test_start = False
+               sim_settings.start = False
+
+               #sim_settings.elapsed_time = 0
+
+               draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture)
+
+               sim_settings.show_data = True
+
+               
 
           
      if pr.is_key_pressed(pr.KEY_I):
@@ -115,9 +141,8 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
 
 
           draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture)
-          
-          #for i in range(len(sim_settings.gathered_data.data)):
-          #        print(sim_settings.gathered_data.data[i])
+
+          sim_settings.gathered_data.data = []
 
      
           
