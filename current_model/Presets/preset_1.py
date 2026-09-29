@@ -5,7 +5,7 @@ from vector.vector import *
 
 class preset_1():
 
-    def __init__(self):
+    def __init__(self): # earth and moon 
 
         self.planets = [
             #radius Mm, position Mm, yaw_deg, pitch_deg, density g/cm3, speed km/s, colour, planet_id

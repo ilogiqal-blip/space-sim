@@ -60,8 +60,8 @@ class menu():
 ########################################################################## preset button 1
         if self.input.get_option_hovered() == "preset_1":
 
-            pr.draw_rectangle(70,430,420,150,pr.DARKGRAY)
-            pr.draw_rectangle_lines(70,430,420,150,pr.GRAY)
+            pr.draw_rectangle(70,430,420,75,pr.DARKGRAY)
+            pr.draw_rectangle_lines(70,430,420,75,pr.GRAY)
             pr.draw_text("preset 1", 90, 450, 40, pr.WHITE)
         
 
@@ -71,15 +71,15 @@ class menu():
                 self.objects.extend(preset.planets)
 
         else:
-            pr.draw_rectangle(70,430,420,150,pr.GRAY)
+            pr.draw_rectangle(70,430,420,75,pr.GRAY)
             pr.draw_text("preset 1", 90, 450, 40, pr.WHITE)
 
 ########################################################################## preset button 2
         if self.input.get_option_hovered() == "preset_2":
 
-            pr.draw_rectangle(70,610,420,150,pr.DARKGRAY)
-            pr.draw_rectangle_lines(70,610,420,150,pr.GRAY)
-            pr.draw_text("preset 2", 90, 630, 40, pr.WHITE)
+            pr.draw_rectangle(70,535,420,75,pr.DARKGRAY)
+            pr.draw_rectangle_lines(70,535,420,75,pr.GRAY)
+            pr.draw_text("preset 2", 90, 555, 40, pr.WHITE)
         
 
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
@@ -88,9 +88,42 @@ class menu():
                 self.objects.extend(preset.planets)
 
         else:
-            pr.draw_rectangle(70,610,420,150,pr.GRAY)
-            pr.draw_text("preset 2", 90, 630, 40, pr.WHITE)
+            pr.draw_rectangle(70,535,420,75,pr.GRAY)
+            pr.draw_text("preset 2", 90, 555, 40, pr.WHITE)
 
+########################################################################## preset button 3
+        if self.input.get_option_hovered() == "preset_3":
+        
+            pr.draw_rectangle(70,640,420,75,pr.DARKGRAY)
+            pr.draw_rectangle_lines(70,640,420,75,pr.GRAY)
+            pr.draw_text("preset 3", 90, 660, 40, pr.WHITE)
+                
+        
+            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+        
+                preset = self.preset.load("preset_3")
+                self.objects.extend(preset.planets)
+        
+        else:
+            pr.draw_rectangle(70,640,420,75,pr.GRAY)
+            pr.draw_text("preset 3", 90, 660, 40, pr.WHITE)
+
+########################################################################## preset button 4
+        if self.input.get_option_hovered() == "preset_4":
+        
+            pr.draw_rectangle(70,745,420,75,pr.DARKGRAY)
+            pr.draw_rectangle_lines(70,745,420,75,pr.GRAY)
+            pr.draw_text("preset 4", 90, 765, 40, pr.WHITE)
+                
+        
+            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+        
+                preset = self.preset.load("preset_4")
+                self.objects.extend(preset.planets)
+        
+        else:
+            pr.draw_rectangle(70,745,420,75,pr.GRAY)
+            pr.draw_text("preset 4", 90, 765, 40, pr.WHITE)
 
 
 

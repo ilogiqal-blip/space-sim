@@ -1,5 +1,5 @@
 import pyray as pr
-from loop import *
+from loop import * 
 #print(dir(pr))
 
 
@@ -21,3 +21,4 @@ def main():
 
 
 main()
+

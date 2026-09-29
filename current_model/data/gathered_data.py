@@ -1,9 +1,16 @@
+
+
 class gathered_data():
-    def __init__(self,type):
-        self.type = type
-        self.data = []
+    def __init__(self):
+        self.change = []
+        self.time = []
 
-    def add_data(self,type,data,time,):
+    def add_data(self,data,time,):
+            
+            self.time.append(time)
+            self.change.append(data)
 
-        if type == self.type:
-            self.data.append([time,data])
+    def clear_data(self):
+
+        self.change = []
+        self.time = []

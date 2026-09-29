@@ -63,7 +63,7 @@ class Game():
 
                         percentage_loss = calc_percentage_loss(self.objects,self.sim_settings)
 
-                        self.sim_settings.gathered_data.add_data(f"%loss",percentage_loss,self.sim_settings.elapsed_time)
+                        self.sim_settings.gathered_data.add_data(percentage_loss,self.sim_settings.elapsed_time)
 
                     
                     

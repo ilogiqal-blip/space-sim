@@ -9,11 +9,15 @@ class get_main_menu_option():
     def get_option_hovered(self):
         mouse_pos = pr.get_mouse_position()
 
-        if (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (self.start.y < mouse_pos.y < self.start.y + self.lenght.y):
+        if (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (70 < mouse_pos.y < 220):
             return "create new planet"
-        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (self.start.y +180 < mouse_pos.y < self.start.y + self.lenght.y +180):
+        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (250 < mouse_pos.y < 400):
             return "reset"
-        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (self.start.y +360 < mouse_pos.y < self.start.y + self.lenght.y +360):
+        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (430 < mouse_pos.y < 505):
             return "preset_1"
-        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (self.start.y +540 < mouse_pos.y < self.start.y + self.lenght.y +540):
+        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (535 < mouse_pos.y < 610):
             return "preset_2"
+        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (640 < mouse_pos.y < 715):
+            return "preset_3"
+        elif (self.start.x < mouse_pos.x < self.start.x + self.lenght.x) and (745 < mouse_pos.y < 820):
+            return "preset_4"

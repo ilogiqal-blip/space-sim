@@ -20,7 +20,7 @@ class Player():
         self.speed = speed
         self.version = Player_version
         print(f"sensitivity set to:{self.sensitiviy}")
-        print(f"Player version {Player_version:5}")
+        
 
 
 

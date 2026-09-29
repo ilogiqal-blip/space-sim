@@ -5,7 +5,7 @@ from vector.vector import *
 
 class preset_2():
 
-    def __init__(self):
+    def __init__(self): ## two body problem 
 
         self.planets = [
 
