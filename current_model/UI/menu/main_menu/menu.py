@@ -83,12 +83,14 @@ class menu():
 ########################################################################## preset button 2
         if self.input.get_option_hovered() == "preset_2":
 
+            group = get_group(70,535)
+
             pr.draw_rectangle(70,535,420,75,pr.DARKGRAY)
             pr.draw_rectangle_lines(70,535,420,75,pr.GRAY)
             pr.draw_text("preset 2", 90, 555, 40, pr.WHITE)
         
 
-            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+            if group != -1:
 
                 preset = self.preset.load("preset_2")
                 if group == 0:
@@ -102,13 +104,15 @@ class menu():
 
 ########################################################################## preset button 3
         if self.input.get_option_hovered() == "preset_3":
+
+            group = get_group(70,640)
         
             pr.draw_rectangle(70,640,420,75,pr.DARKGRAY)
             pr.draw_rectangle_lines(70,640,420,75,pr.GRAY)
             pr.draw_text("preset 3", 90, 660, 40, pr.WHITE)
                 
         
-            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+            if group != -1:
         
                 preset = self.preset.load("preset_3")
                 if group == 0:
@@ -122,13 +126,15 @@ class menu():
 
 ########################################################################## preset button 4
         if self.input.get_option_hovered() == "preset_4":
+
+            group = get_group(70,745)
         
             pr.draw_rectangle(70,745,420,75,pr.DARKGRAY)
             pr.draw_rectangle_lines(70,745,420,75,pr.GRAY)
             pr.draw_text("preset 4", 90, 765, 40, pr.WHITE)
                 
         
-            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+            if group != -1:
         
                 preset = self.preset.load("preset_4")
                 if group == 0:
