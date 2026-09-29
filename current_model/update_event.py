@@ -18,13 +18,8 @@ def update_event_menu(ui):
     if not ui.main_menu.state.menu_open:
         ui.config_menu.state.menu_open = False
           
-def update_event_collision(ui,objects):
-    
-    if check_collision(objects):
-        if not ui.collision_menu.state.menu_open:
-            ui.collision_menu.state.toggle_state()
 
-def update_event_sim_settings(sim_settings,objects,graph_texture):
+def update_event_sim_settings(sim_settings,group_0_objects,group_1_objects):
      change = None
      mode = sim_settings.get_mode()
 
@@ -65,11 +60,17 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
           elif change == "decrease":
                sim_settings.target_frames -= 10
 
-     if mode == "integrator" and not sim_settings.test_start:
-          if change == "increase" and sim_settings.integrator_value < 2:
-               sim_settings.integrator_value += 1
-          elif change == "decrease" and sim_settings.integrator_value > 0:
-               sim_settings.integrator_value -= 1
+     if mode == "group 0 integrator" and not sim_settings.test_start:
+          if change == "increase" and sim_settings.group_0_integrator_value < 2:
+               sim_settings.group_0_integrator_value += 1
+          elif change == "decrease" and sim_settings.group_0_integrator_value > 0:
+               sim_settings.group_0_integrator_value -= 1
+
+     if mode == "group 1 integrator" and not sim_settings.test_start:
+               if change == "increase" and sim_settings.group_1_integrator_value < 2:
+                    sim_settings.group_1_integrator_value += 1
+               elif change == "decrease" and sim_settings.group_1_integrator_value > 0:
+                    sim_settings.group_1_integrator_value -= 1
 
      if mode == "start":
           if change == "increase":
@@ -80,26 +81,22 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
      if mode == "test start":
           if change == "increase":
                sim_settings.test_start = True
-               sim_settings.start = True
-
-               
-
-               energy = calc_total_energy(objects)
-
-               if sim_settings.elapsed_time == 0:
-                    sim_settings.initial_total_system_energy = energy
-
-               sim_settings.current_total_system_energy = energy
-               
+               sim_settings.start = True     
 
           if not sim_settings.test_start and pr.is_key_pressed(pr.KEY_BACKSPACE):
 
                sim_settings.test_start = False
                sim_settings.start = False
                sim_settings.elapsed_time = 0
-               sim_settings.initial_total_system_energy = 0
-               sim_settings.current_total_system_energy = 0
-               sim_settings.gathered_data.clear_data()
+
+               sim_settings.group_0_initial_total_system_energy = 0
+               sim_settings.group_0_current_total_system_energy = 0
+
+               sim_settings.group_1_initial_total_system_energy = 0
+               sim_settings.group_1_current_total_system_energy = 0
+
+               sim_settings.group_0_gathered_data.clear_data()
+               sim_settings.group_1_gathered_data.clear_data()
      
 
           elif change == "decrease":
@@ -107,15 +104,29 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
                sim_settings.start = False
 
 
+     if sim_settings.test_start:
+          group_0_energy = calc_total_energy(group_0_objects)
+          group_1_energy = calc_total_energy(group_1_objects)
+          
+          if sim_settings.elapsed_time == 0:
+               sim_settings.group_0_initial_total_system_energy = group_0_energy
+               sim_settings.group_1_initial_total_system_energy = group_1_energy
+
                
 
           
      if pr.is_key_pressed(pr.KEY_I):
-          
-          plot_graph(sim_settings.gathered_data)
+
+          plot_graph(
+               sim_settings.group_0_gathered_data,
+               sim_settings.group_1_gathered_data,
+               sim_settings.get_integrator("0"),
+               sim_settings.get_integrator("1"),
+          )
 
           sim_settings.test_start = False
           sim_settings.start = False
+
 
      
 
@@ -127,11 +138,6 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
           sim_settings.elapsed_time = 0
 
           sim_settings.test_start = False
-
-          sim_settings.initial_total_system_energy = 0
-          sim_settings.current_total_system_energy = 0
-
-
 
           sim_settings.gathered_data.clear_data()
 

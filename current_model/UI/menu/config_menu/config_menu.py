@@ -9,7 +9,7 @@ from vector.vector import *
 
 class config_menu():
 
-    def __init__(self,objects,collision_menu):
+    def __init__(self,group_0_objects,collision_menu):
         self.radius_Mm = 6
         self.density_g_cm3 = 5
         self.position_x = 0
@@ -21,7 +21,7 @@ class config_menu():
         self.input = get_config_menu_option()
         self.x_start = 610 + 550
         self.y_start = 130
-        self.objects = objects
+        self.group_0_objects = group_0_objects
         self.state = menu_state()
         self.collision_menu = collision_menu
     
@@ -63,7 +63,7 @@ class config_menu():
                     self.planet_id += 1
 
                     planet = Planet(*self.create_planet())
-                    self.objects.append(planet)
+                    self.group_0_objects.append(planet)
             else:
                 pr.draw_rectangle(1440, 150, 100, 100, pr.DARKGREEN)
                 pr.draw_rectangle_lines(1440, 150, 100, 100, pr.WHITE)

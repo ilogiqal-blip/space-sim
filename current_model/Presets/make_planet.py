@@ -24,4 +24,4 @@ def make_planet(radius, position, yaw_deg, pitch_deg, density, speed, colour, pl
             direction_z * s
         ) 
 
-        return Planet(r, position, colour, mass, velocity, planet_id)    
+        return Planet(r, position, colour, mass, velocity, planet_id, )    

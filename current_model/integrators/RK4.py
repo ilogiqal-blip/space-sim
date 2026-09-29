@@ -5,10 +5,10 @@ from vector.vector import *
 def RK4_integrate(objects,sim_settings):
     
 
-    dt = (pr.get_frame_time() * sim_settings.time_scale / sim_settings.substeps)
+     dt = (pr.get_frame_time() * sim_settings.time_scale / sim_settings.substeps)
 
 
-    for i in range(sim_settings.substeps):
+     for i in range(sim_settings.substeps):
 #######################################################################k1
         # k1_v is just the initial velocity
         # so no k1 is needed to be calculated
@@ -79,6 +79,8 @@ def RK4_integrate(objects,sim_settings):
              planet.velocity.x += dt/6 * (planet.k1_a.x + (planet.k2_a.x * 2) + (planet.k3_a.x * 2) + planet.k4_a.x)
              planet.velocity.y += dt/6 * (planet.k1_a.y + (planet.k2_a.y * 2) + (planet.k3_a.y * 2) + planet.k4_a.y)
              planet.velocity.z += dt/6 * (planet.k1_a.z + (planet.k2_a.z * 2) + (planet.k3_a.z * 2) + planet.k4_a.z)
+             
+     print("used integrator: RK4")
 
 
 

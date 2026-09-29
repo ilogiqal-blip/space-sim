@@ -1,6 +1,6 @@
 import pyray as pr
 
-def grid(planets):
+def grid():
     count = 0
 
     size = 200 #Mm

@@ -3,14 +3,15 @@ from ..config_menu.config_menu import *
 from ..state import *
 from .input import *
 from Presets.Preset import *
-
+from ..group_select.group_select import *
 
 
 class menu():
 
-    def __init__(self,objects):
+    def __init__(self,group_0_objects,group_1_objects):
         self.config_menu_state = menu_state()
-        self.objects = objects
+        self.group_0_objects = group_0_objects
+        self.group_1_objects = group_1_objects
         self.start_x = 600 + 550
         self.start_y = 70
         self.input = get_main_menu_option()
@@ -50,7 +51,8 @@ class menu():
 
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
 
-                self.objects.clear()
+                self.group_1_objects.clear()
+                self.group_0_objects.clear()
                 config_menu.config_reset(sim_settings)
 
         else:
@@ -59,16 +61,20 @@ class menu():
 
 ########################################################################## preset button 1
         if self.input.get_option_hovered() == "preset_1":
+            group = get_group(70,430)
 
             pr.draw_rectangle(70,430,420,75,pr.DARKGRAY)
             pr.draw_rectangle_lines(70,430,420,75,pr.GRAY)
             pr.draw_text("preset 1", 90, 450, 40, pr.WHITE)
         
 
-            if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
+            if group != -1:
 
                 preset = self.preset.load("preset_1")
-                self.objects.extend(preset.planets)
+                if group == 0:
+                    self.group_0_objects.extend(preset.planets)
+                elif group == 1:
+                    self.group_1_objects.extend(preset.planets)
 
         else:
             pr.draw_rectangle(70,430,420,75,pr.GRAY)
@@ -85,7 +91,10 @@ class menu():
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
 
                 preset = self.preset.load("preset_2")
-                self.objects.extend(preset.planets)
+                if group == 0:
+                    self.group_0_objects.extend(preset.planets)
+                elif group == 1:
+                    self.group_1_objects.extend(preset.planets)
 
         else:
             pr.draw_rectangle(70,535,420,75,pr.GRAY)
@@ -102,7 +111,10 @@ class menu():
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
         
                 preset = self.preset.load("preset_3")
-                self.objects.extend(preset.planets)
+                if group == 0:
+                    self.group_0_objects.extend(preset.planets)
+                elif group == 1:
+                    self.group_1_objects.extend(preset.planets)
         
         else:
             pr.draw_rectangle(70,640,420,75,pr.GRAY)
@@ -119,7 +131,10 @@ class menu():
             if pr.is_mouse_button_released(pr.MOUSE_BUTTON_LEFT):
         
                 preset = self.preset.load("preset_4")
-                self.objects.extend(preset.planets)
+                if group == 0:
+                    self.group_0_objects.extend(preset.planets)
+                elif group == 1:
+                    self.group_1_objects.extend(preset.planets)
         
         else:
             pr.draw_rectangle(70,745,420,75,pr.GRAY)

@@ -6,11 +6,11 @@ from .menu.collisions_menu.collision_menu import *
 
 class UI():
     
-    def __init__(self,camera,objects):
+    def __init__(self,camera,group_0_objects,group_1_objects):
         
-        self.main_menu = menu(objects)
+        self.main_menu = menu(group_0_objects,group_1_objects)
         self.collision_menu = collision_menu()
-        self.config_menu = config_menu(objects,self.collision_menu)
+        self.config_menu = config_menu(group_0_objects,self.collision_menu)
         
         self.camera = camera
         
@@ -26,11 +26,12 @@ class UI():
         pr.draw_text(f"display scale = x{sim_settings.display_scale}", 10, 70, 20, sim_settings.Get_colour("display_scale"))
         pr.draw_text(f"target frames = {sim_settings.target_frames}", 10, 100 , 20, sim_settings.Get_colour("target_frames"))
         pr.draw_text(f"player speed x{player.speed}", 10, 130 , 20, sim_settings.Get_colour("player speed"))
-        pr.draw_text(f"integrator = {sim_settings.get_integrator()}", 10, 160 , 20 ,sim_settings.Get_colour("integrator"))
-        pr.draw_text(f"start = {sim_settings.start}", 10, 190 , 20 ,sim_settings.Get_colour("start"))
-        pr.draw_text(f"test start = {sim_settings.test_start}", 10, 220 , 20 ,sim_settings.Get_colour("test start"))
-        pr.draw_text(f"elasped time = {sim_settings.elapsed_time:.5f}", 10, 250 , 20 ,sim_settings.Get_colour("elapsed time"))
-        pr.draw_text(f"target time = {sim_settings.simulation_duration}", 10, 280 , 20 ,sim_settings.Get_colour("sim duratiion"))
+        pr.draw_text(f"group 0 integrator = {sim_settings.get_integrator("0")}", 10, 160 , 20 ,sim_settings.Get_colour("group 0 integrator"))
+        pr.draw_text(f"group 1 integrator = {sim_settings.get_integrator("1")}", 10, 190 , 20 ,sim_settings.Get_colour("group 1 integrator"))
+        pr.draw_text(f"start = {sim_settings.start}", 10, 220 , 20 ,sim_settings.Get_colour("start"))
+        pr.draw_text(f"test start = {sim_settings.test_start}", 10, 250 , 20 ,sim_settings.Get_colour("test start"))
+        pr.draw_text(f"elasped time = {sim_settings.elapsed_time:.5f}", 10, 280 , 20 ,sim_settings.Get_colour("elapsed time"))
+        pr.draw_text(f"target time = {sim_settings.simulation_duration}", 10, 310 , 20 ,sim_settings.Get_colour("sim duratiion"))
 
 
 
