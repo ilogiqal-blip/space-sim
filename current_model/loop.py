@@ -11,7 +11,6 @@ from update_event import *
 from physics.simulation.simulate_settings import *
 from data.gathered_data import *
 from data.calculate_percentage_loss import *
-from data.data_display import *
 
 
 class Game():
@@ -97,13 +96,6 @@ class Game():
 
             self.ui.draw_UI(self.sim_settings,self.player)
 
-            if self.sim_settings.show_data:
-                pr.draw_texture_rec(
-                    graph_texture.texture,
-                    pr.Rectangle(0, 0, 1200, -800),
-                    pr.Vector2(200, 20),
-                    pr.LIGHTGRAY
-                )
                                 
                 
             pr.end_drawing()

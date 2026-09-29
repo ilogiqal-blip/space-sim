@@ -13,7 +13,6 @@ class Sim_settings():
         self.current_total_system_energy = 0
         self.elapsed_time = 0
         self.gathered_data = gathered_data()
-        self.show_data = False
         self.simulation_duration = 1800
         self.unit_y_division = 1
         

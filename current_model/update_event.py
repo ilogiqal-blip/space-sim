@@ -1,7 +1,6 @@
 import pyray as pr
 from physics.collisions import *
 from physics.total_energy import *
-#from data.data_display import *
 from data.matplot_graphs import *
 
 
@@ -82,7 +81,6 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
           if change == "increase":
                sim_settings.test_start = True
                sim_settings.start = True
-               sim_settings.show_data = False
 
                
 
@@ -99,7 +97,6 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
                sim_settings.test_start = False
                sim_settings.start = False
                sim_settings.elapsed_time = 0
-               sim_settings.show_data = False
                sim_settings.initial_total_system_energy = 0
                sim_settings.current_total_system_energy = 0
                sim_settings.gathered_data.clear_data()
@@ -110,25 +107,20 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
                sim_settings.start = False
 
 
-               #draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture,sim_settings.unit_y_division)
-               plot_graph(sim_settings.gathered_data)
-
-               sim_settings.show_data = True
-
                
 
           
      if pr.is_key_pressed(pr.KEY_I):
           
-          if sim_settings.show_data:
-               sim_settings.show_data = False
-          else:
-               sim_settings.show_data = True 
+          plot_graph(sim_settings.gathered_data)
+
+          sim_settings.test_start = False
+          sim_settings.start = False
 
      
 
      if sim_settings.elapsed_time > sim_settings.simulation_duration and sim_settings.test_start:
-          sim_settings.show_data = True
+          
 
           sim_settings.start = False
 
@@ -140,29 +132,9 @@ def update_event_sim_settings(sim_settings,objects,graph_texture):
           sim_settings.current_total_system_energy = 0
 
 
-          #draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture,sim_settings.unit_y_division)
-
-
 
           sim_settings.gathered_data.clear_data()
 
-     #if sim_settings.show_data:
-          #if pr.is_key_pressed(pr.KEY_P):
-               #graph_image = pr.load_image_from_texture(graph_texture.texture)
-               #pr.image_flip_vertical(graph_image)
-               #pr.export_image(graph_image, "graph_output.png")
-               #pr.unload_image(graph_image)
-               #print("Texture was saved!")
-
-     if sim_settings.show_data:
-          if pr.is_key_pressed(pr.KEY_M):
-               sim_settings.unit_y_division *= 2
-               #draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture,sim_settings.unit_y_division)
-               
-          if pr.is_key_pressed(pr.KEY_N):
-               sim_settings.unit_y_division /= 2
-               #draw_graph(f"elapsed time",f"percentage change",sim_settings.gathered_data,graph_texture,sim_settings.unit_y_division)
-          
 
      
           
