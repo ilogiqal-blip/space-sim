@@ -139,7 +139,12 @@ def update_event_sim_settings(sim_settings,group_0_objects,group_1_objects):
 
           sim_settings.test_start = False
 
-          sim_settings.gathered_data.clear_data()
+          plot_graph(
+                         sim_settings.group_0_gathered_data,
+                         sim_settings.group_1_gathered_data,
+                         sim_settings.get_integrator("0"),
+                         sim_settings.get_integrator("1"),
+                    )
 
 
      
