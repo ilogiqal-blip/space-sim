@@ -50,4 +50,4 @@ def euler_integrate(objects,sim_settings):
                         
             for planet in objects:             #this for loop updates all of the planets position after all of
                 update(planet,dt)              #the planets seperate accelerations have been calculated
-        print("used integrator: euler") 
+        #print("used integrator: euler") 

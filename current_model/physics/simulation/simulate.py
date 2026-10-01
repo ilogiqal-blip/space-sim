@@ -9,15 +9,17 @@ def simulate(objects,sim_settings,group):
     print("fetched integrator",group)
 
     if integrator == "euler":
+        #print("using integrator: euler",group)
         euler_integrate(objects,sim_settings)
-        print("using integrator: euler",group)
-
+        
 
     elif integrator == "RK4":
+        #print("using integrator: RK4",group)
         RK4_integrate(objects,sim_settings)
-        print("using integrator: RK4",group)
+        
         
         
     elif integrator =="velocity verlet":
+        #print("using integrator: velocity verlet",group)
         velocity_verlet_integrate(objects,sim_settings)
-        print("using integrator: velocity verlet",group)
+        

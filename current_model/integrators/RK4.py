@@ -80,7 +80,7 @@ def RK4_integrate(objects,sim_settings):
              planet.velocity.y += dt/6 * (planet.k1_a.y + (planet.k2_a.y * 2) + (planet.k3_a.y * 2) + planet.k4_a.y)
              planet.velocity.z += dt/6 * (planet.k1_a.z + (planet.k2_a.z * 2) + (planet.k3_a.z * 2) + planet.k4_a.z)
              
-     print("used integrator: RK4")
+     #print("used integrator: RK4")
 
 
 

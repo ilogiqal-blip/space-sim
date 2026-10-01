@@ -94,10 +94,11 @@ class Game():
 
             if len(self.group_0_objects) > 0:
                 for planet in self.group_0_objects:
-                    planet.draw(self.sim_settings)
+                    planet.draw(self.sim_settings,"0")
+
             if len(self.group_1_objects) > 0:
                             for planet in self.group_1_objects:
-                                planet.draw(self.sim_settings)
+                                planet.draw(self.sim_settings,"1")
                     
 
 

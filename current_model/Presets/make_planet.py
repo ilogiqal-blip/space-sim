@@ -1,4 +1,3 @@
-import pyray as pr
 import math
 from entities.Planet import Planet
 from vector.vector import *

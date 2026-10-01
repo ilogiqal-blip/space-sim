@@ -10,7 +10,7 @@ class Planet():
                
         self.radius = radius   #Mm
         self.position = position #Mm
-        self.colour = colour 
+        self.colour = colour
         self.mass = mass #kg
         self.velocity = velocity #Mm/s
         self.acceleration = 0 
@@ -35,7 +35,14 @@ class Planet():
 
     
 
-    def draw(self,sim_settings):
+    def draw(self,sim_settings,group):
+
+        if group == "1":
+             draw_colour = pr.Color(*self.colour[:3],100)
+        elif group == "0":
+             draw_colour = self.colour
+
+
         scaled_pos = Vector3(
                         self.position.x / sim_settings.display_scale,
                         self.position.y / sim_settings.display_scale,
@@ -50,7 +57,7 @@ class Planet():
                             ),
 
                         self.radius / sim_settings.display_scale,
-                        self.colour)
+                        draw_colour)
         
         pr.draw_sphere_wires(
                             (
