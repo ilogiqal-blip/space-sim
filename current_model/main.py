@@ -15,7 +15,7 @@ def main():
     
     loop = Loop()
     
-    loop.start_cloop()
+    loop.start_loop()
 
 
 
