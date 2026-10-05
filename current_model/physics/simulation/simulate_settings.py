@@ -10,6 +10,9 @@ class Sim_settings():
         self.start = False
         self.test_start = False
 
+        self.show_group_0 = True
+        self.show_group_1 = True
+
         self.group_0_initial_total_system_energy = 0
         self.group_0_current_total_system_energy = 0
 

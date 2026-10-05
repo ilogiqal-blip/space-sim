@@ -13,9 +13,9 @@ def main():
 
     
     
-    game = Game()
+    loop = Loop()
     
-    game.start_game_loop()
+    loop.start_cloop()
 
 
 

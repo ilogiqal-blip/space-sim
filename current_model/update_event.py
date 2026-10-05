@@ -114,6 +114,11 @@ def update_event_sim_settings(sim_settings,group_0_objects,group_1_objects):
 
                
 
+     if pr.is_key_pressed(pr.KEY_K):
+          sim_settings.show_group_0 = not sim_settings.show_group_0
+
+     if pr.is_key_pressed(pr.KEY_L):
+          sim_settings.show_group_1 = not sim_settings.show_group_1
           
      if pr.is_key_pressed(pr.KEY_I):
 

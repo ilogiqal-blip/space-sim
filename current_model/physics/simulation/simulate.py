@@ -6,7 +6,7 @@ from integrators.velocity_verlet import *
 def simulate(objects,sim_settings,group):
 
     integrator = sim_settings.get_integrator(group)
-    print("fetched integrator",group)
+    #print("fetched integrator",group)
 
     if integrator == "euler":
         #print("using integrator: euler",group)

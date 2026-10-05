@@ -14,7 +14,7 @@ from data.gathered_data import *
 from data.calculate_percentage_loss import *
 
 
-class Game():
+class Loop():
 
     def __init__(self):
 
@@ -35,7 +35,7 @@ class Game():
         
         
 
-    def start_game_loop(self):
+    def start_loop(self):
         
 
         while not pr.window_should_close():
@@ -92,11 +92,11 @@ class Game():
             grid()
 
 
-            if len(self.group_0_objects) > 0:
+            if len(self.group_0_objects) > 0 and self.sim_settings.show_group_0:
                 for planet in self.group_0_objects:
                     planet.draw(self.sim_settings,"0")
 
-            if len(self.group_1_objects) > 0:
+            if len(self.group_1_objects) > 0 and self.sim_settings.show_group_1:
                             for planet in self.group_1_objects:
                                 planet.draw(self.sim_settings,"1")
                     
@@ -105,11 +105,11 @@ class Game():
        
             pr.end_mode_3d()
 
-            if len(self.group_0_objects) > 0:
+            if len(self.group_0_objects) > 0 and self.sim_settings.show_group_0:
                 for planet in self.group_0_objects:
                     planet.draw_label(self.camera,self.sim_settings)
 
-            if len(self.group_1_objects) > 0:
+            if len(self.group_1_objects) > 0 and self.sim_settings.show_group_1:
                             for planet in self.group_1_objects:
                                 planet.draw_label(self.camera,self.sim_settings)
             
