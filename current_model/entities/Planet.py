@@ -20,6 +20,7 @@ class Planet():
         
         self.temp_planet_pos = Vector3(0,0,0)
         self.temp_planet_velocity = Vector3(0,0,0)
+        self.temp_planet_acceleration = Vector3(0,0,0)
             
         self.k1_v = Vector3(0,0,0)             
         self.k2_v = Vector3(0,0,0)             
