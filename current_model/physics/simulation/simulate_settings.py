@@ -44,7 +44,8 @@ class Sim_settings():
         self.integrator = [
             "euler",
             "RK4",
-            "velocity verlet"
+            "velocity verlet",
+            "position verlet"
         ]
         
         

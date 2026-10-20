@@ -1,6 +1,7 @@
 from integrators.euler import *
 from integrators.RK4 import *
 from integrators.velocity_verlet import *
+from integrators.position_verlet import *
 
 
 def simulate(objects,sim_settings,group):
@@ -18,8 +19,10 @@ def simulate(objects,sim_settings,group):
         RK4_integrate(objects,sim_settings)
         
         
-        
     elif integrator =="velocity verlet":
         #print("using integrator: velocity verlet",group)
         velocity_verlet_integrate(objects,sim_settings)
+
+    elif integrator == "position verlet":
+        position_verlet_integrate(objects,sim_settings)
         

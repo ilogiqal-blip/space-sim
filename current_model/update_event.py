@@ -61,13 +61,13 @@ def update_event_sim_settings(sim_settings,group_0_objects,group_1_objects):
                sim_settings.target_frames -= 10
 
      if mode == "group 0 integrator" and not sim_settings.test_start:
-          if change == "increase" and sim_settings.group_0_integrator_value < 2:
+          if change == "increase" and sim_settings.group_0_integrator_value < 3:
                sim_settings.group_0_integrator_value += 1
           elif change == "decrease" and sim_settings.group_0_integrator_value > 0:
                sim_settings.group_0_integrator_value -= 1
 
      if mode == "group 1 integrator" and not sim_settings.test_start:
-               if change == "increase" and sim_settings.group_1_integrator_value < 2:
+               if change == "increase" and sim_settings.group_1_integrator_value < 3:
                     sim_settings.group_1_integrator_value += 1
                elif change == "decrease" and sim_settings.group_1_integrator_value > 0:
                     sim_settings.group_1_integrator_value -= 1
